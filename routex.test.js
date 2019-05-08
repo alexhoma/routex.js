@@ -61,4 +61,18 @@ describe('routex', () => {
         .add({ name: routeName })
     ).toThrow(new Error(`This routeName already exists: ${routeName}`));
   });
+
+  test('should add a route definition where page property has a leading slash', () => {
+    const { routes } = routex().add({
+      name: 'route',
+      page: '/route-with-leading-slash'
+    });
+    const route = routes[0];
+    const expected = {
+      name: 'route',
+      page: '/route-with-leading-slash'
+    };
+
+    expect(route).toMatchObject(expected);
+  });
 });

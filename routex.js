@@ -15,7 +15,7 @@ function routex() {
     routes.push({
       name,
       pattern: `/${pattern || name}`,
-      page: `/${page || name}`
+      page: `/${page || name}`.replace('//', '/')
     });
 
     return this;
