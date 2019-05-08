@@ -1,10 +1,14 @@
 import routex from './routex';
 
 describe('routex', () => {
-  test('add with object', () => {
-    const { routes } = routex().add({ name: 'a' });
+  test('add route as string', () => {
+    const { routes } = routex().add('string-route');
     const route = routes[0];
-    const expected = { name: 'a', pattern: '/a', page: '/a' };
+    const expected = {
+      name: 'string-route',
+      pattern: '/string-route',
+      page: '/string-route'
+    };
 
     expect(route).toMatchObject(expected);
   });
