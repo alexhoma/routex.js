@@ -1,7 +1,7 @@
 import routex from './routex';
 
 describe('routex', () => {
-  test('should add a route definition with name as object property', () => {
+  test('should add a route definition with name', () => {
     const { routes } = routex().add({ name: 'route' });
     const route = routes[0];
     const expected = {
@@ -13,7 +13,7 @@ describe('routex', () => {
     expect(route).toMatchObject(expected);
   });
 
-  test('should add a route definition with name and pattern as object properties', () => {
+  test('should add a route definition with name and pattern', () => {
     const { routes } = routex().add({
       name: 'route',
       pattern: 'route-pattern'
@@ -28,7 +28,7 @@ describe('routex', () => {
     expect(route).toMatchObject(expected);
   });
 
-  test('add a route definition with name, pattern and page as object properties', () => {
+  test('should add a route definition with name, pattern and page', () => {
     const { routes } = routex().add({
       name: 'route',
       pattern: 'route-pattern',
@@ -44,11 +44,19 @@ describe('routex', () => {
     expect(route).toMatchObject(expected);
   });
 
-  test('add many route definitions', () => {
+  test('should add many route definitions', () => {
     const { routes } = routex()
       .add({ name: 'first-route' })
-      .add('second-route');
+      .add({ name: 'second-route' });
 
     expect(routes.length).toBe(2);
+  });
+
+  test('should throw an Error if route name already exists', () => {
+    expect(() =>
+      routex()
+        .add({ name: 'route' })
+        .add({ name: 'route' })
+    ).toThrow(new Error('This routeName already exists'));
   });
 });

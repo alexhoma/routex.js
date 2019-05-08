@@ -4,6 +4,10 @@ function routex() {
   function add(route) {
     const { name, pattern, page } = route;
 
+    if (routes.find(route => route.name === name)) {
+      throw new Error('This routeName already exists');
+    }
+
     routes.push({
       name,
       pattern: `/${pattern || name}`,
