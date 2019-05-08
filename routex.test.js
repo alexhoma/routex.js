@@ -62,15 +62,15 @@ describe('routex', () => {
     ).toThrow(new Error(`This routeName already exists: ${routeName}`));
   });
 
-  test('should add a route definition where page property has a leading slash', () => {
+  test('should replace route definition to slash when equals to "index"', () => {
     const { routes } = routex().add({
-      name: 'route',
-      page: '/route-with-leading-slash'
+      name: 'index'
     });
     const route = routes[0];
     const expected = {
-      name: 'route',
-      page: '/route-with-leading-slash'
+      name: 'index',
+      pattern: '/index',
+      page: '/'
     };
 
     expect(route).toMatchObject(expected);
