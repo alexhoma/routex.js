@@ -1,0 +1,34 @@
+{
+  "name": "routex",
+  "version": "1.0.0",
+  "description": "Dynamic routes for Next.js",
+  "source": "routex.js",
+  "main": "dist/routex.js",
+  "module": "dist/routex.mjs",
+  "scripts": {
+    "build": "microbundle",
+    "test": "jest"
+  },
+  "keywords": [
+    "routes",
+    "dynamic-routes",
+    "next.js",
+    "next"
+  ],
+  "author": "alexhoma <alexcm.14@gmail.com>",
+  "license": "ISC",
+  "peerDependencies": {
+    "next": ">=2",
+    "react": "^15.4.2 || ^16"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0",
+    "microbundle": "^0.11.0",
+    "next": "^8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
