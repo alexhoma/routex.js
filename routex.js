@@ -2,12 +2,12 @@ function routex() {
   let routes = [];
 
   function add(route) {
-    const { name, pattern } = route;
+    const { name, pattern, page } = route;
 
     routes.push({
       name,
       pattern: `/${pattern || name}`,
-      page: `/${name}`
+      page: `/${page || name}`
     });
 
     return this;

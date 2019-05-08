@@ -27,4 +27,20 @@ describe('routex', () => {
 
     expect(route).toMatchObject(expected);
   });
+
+  test('add route with name, pattern and page as object properties', () => {
+    const { routes } = routex().add({
+      name: 'route',
+      pattern: 'route-pattern',
+      page: 'route-page'
+    });
+    const route = routes[0];
+    const expected = {
+      name: 'route',
+      pattern: '/route-pattern',
+      page: '/route-page'
+    };
+
+    expect(route).toMatchObject(expected);
+  });
 });
