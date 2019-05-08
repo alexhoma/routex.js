@@ -2,18 +2,12 @@ function routex() {
   let routes = [];
 
   function add(route) {
-    if (typeof route !== 'object') {
-      routes.push({
-        name: route,
-        pattern: '/' + route,
-        page: '/' + route
-      });
-    }
+    const { name, pattern } = route;
 
     routes.push({
-      name: route.name,
-      pattern: '/' + route.name,
-      page: '/' + route.name
+      name,
+      pattern: `/${pattern || name}`,
+      page: `/${name}`
     });
 
     return this;
