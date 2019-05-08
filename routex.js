@@ -1,10 +1,14 @@
 function routex() {
   let routes = [];
 
+  function findByName(name) {
+    return routes.find(route => route.name === name);
+  }
+
   function add(route) {
     const { name, pattern, page } = route;
 
-    if (routes.find(route => route.name === name)) {
+    if (findByName(name)) {
       throw new Error('This routeName already exists');
     }
 
