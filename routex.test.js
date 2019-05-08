@@ -53,10 +53,12 @@ describe('routex', () => {
   });
 
   test('should throw an Error if route name already exists', () => {
+    const routeName = 'repeated-route';
+
     expect(() =>
       routex()
-        .add({ name: 'route' })
-        .add({ name: 'route' })
-    ).toThrow(new Error('This routeName already exists'));
+        .add({ name: routeName })
+        .add({ name: routeName })
+    ).toThrow(new Error(`This routeName already exists: ${routeName}`));
   });
 });

@@ -9,7 +9,7 @@ function routex() {
     const { name, pattern, page } = route;
 
     if (findByName(name)) {
-      throw new Error('This routeName already exists');
+      throw new Error(`This routeName already exists: ${name}`);
     }
 
     routes.push({
