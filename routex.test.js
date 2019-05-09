@@ -1,4 +1,8 @@
 import routex from './routex';
+import React from 'react';
+import ReactShallowRenderer from 'react-test-renderer/shallow';
+
+const renderer = new ReactShallowRenderer();
 
 describe('routex', () => {
   test('should add a route definition with name', () => {
@@ -74,5 +78,18 @@ describe('routex', () => {
     };
 
     expect(route).toMatchObject(expected);
+  });
+});
+
+describe('routes Link', () => {
+  test('should have a Link component that renders an <a />', () => {
+    const { Link } = routex();
+    const tree = renderer.render(
+      <Link>
+        <a>Anchor text</a>
+      </Link>
+    );
+
+    expect(tree.type).toBe('a');
   });
 });

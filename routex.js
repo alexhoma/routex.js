@@ -1,3 +1,6 @@
+import NextLink from 'next/link';
+import React from 'react';
+
 function createRoute(definition) {
   const { name, pattern, page } = definition;
 
@@ -11,7 +14,7 @@ function createRoute(definition) {
   };
 }
 
-function routex() {
+function routex({ Link = NextLink } = {}) {
   let routes = [];
 
   function findByName(name) {
@@ -31,9 +34,14 @@ function routex() {
     return this;
   }
 
+  function getLinkComponent() {
+    return Link;
+  }
+
   return {
     add,
-    routes
+    routes,
+    Link: getLinkComponent()
   };
 }
 
