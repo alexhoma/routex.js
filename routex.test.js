@@ -121,12 +121,11 @@ describe('routex', () => {
 });
 
 describe('RoutexLink ', () => {
-  test('should have a Link component that renders its children correctly', () => {
-    const { Link } = routex().add({
-      name: 'a-route-name'
-    });
+  test('should have a Link with default props when route prop is not defined', () => {
+    const { Link } = routex();
+
     const tree = renderer.render(
-      <Link route="a-route-name">
+      <Link>
         <a>Anchor text</a>
       </Link>
     );

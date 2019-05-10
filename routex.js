@@ -39,6 +39,11 @@ function routex({ Link = NextLink } = {}) {
   function getLinkComponent() {
     const RoutexLink = props => {
       const { route } = props;
+
+      if (!route) {
+        return <Link {...props} />;
+      }
+
       const { pattern, page } = findByName(route);
 
       return <Link as={pattern} href={page} {...props} />;

@@ -8,10 +8,16 @@
   "author": "alexhoma <alexcm.14@gmail.com>",
   "license": "ISC",
   "keywords": [
+    "next",
+    "nextjs",
+    "react",
+    "reactjs",
+    "router",
     "routes",
+    "routing",
     "dynamic-routes",
-    "next.js",
-    "next"
+    "universal",
+    "isomorphic"
   ],
   "scripts": {
     "build": "microbundle",
