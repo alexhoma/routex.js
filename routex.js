@@ -1,13 +1,9 @@
 import NextLink from 'next/link';
 import React from 'react';
 
-function createRoute(definition) {
-  const { name, pattern, page } = definition;
-
-  const routePattern = `/${pattern || name}`.replace(/^\/\//, '/');
-  const routePage = `/${page || name}`
-    .replace(/^\/index$/, '/')
-    .replace(/^\/\//, '/');
+function createRoute({ name, pattern = name, page = name }) {
+  const routePattern = `/${pattern}`.replace(/^\/\//, '/');
+  const routePage = `/${page}`.replace(/^\/index$/, '/').replace(/^\/\//, '/');
 
   return {
     name,
@@ -26,8 +22,12 @@ function routex({ Link = NextLink } = {}) {
   function add(definition) {
     const { name } = definition;
 
+    if (!name) {
+      throw new Error(`A route name must be defined`);
+    }
+
     if (findByName(name)) {
-      throw new Error(`This routeName already exists: ${name}`);
+      throw new Error(`This route name already exists: ${name}`);
     }
 
     const route = createRoute(definition);

@@ -5,6 +5,14 @@ import ReactShallowRenderer from 'react-test-renderer/shallow';
 const renderer = new ReactShallowRenderer();
 
 describe('routex', () => {
+  test('should throw an Error if route name does not exist', () => {
+    const badRouteDefinition = {};
+
+    expect(() => routex().add(badRouteDefinition)).toThrow(
+      new Error(`A route name must be defined`)
+    );
+  });
+
   test('should add a route definition with name', () => {
     const { routes } = routex().add({ name: 'route' });
     const route = routes[0];
@@ -46,24 +54,6 @@ describe('routex', () => {
     };
 
     expect(route).toMatchObject(expected);
-  });
-
-  test('should add many route definitions', () => {
-    const { routes } = routex()
-      .add({ name: 'first-route' })
-      .add({ name: 'second-route' });
-
-    expect(routes.length).toBe(2);
-  });
-
-  test('should throw an Error if route name already exists', () => {
-    const routeName = 'repeated-route';
-
-    expect(() =>
-      routex()
-        .add({ name: routeName })
-        .add({ name: routeName })
-    ).toThrow(new Error(`This routeName already exists: ${routeName}`));
   });
 
   test('route definition pattern should not start with more than one slash', () => {
@@ -109,6 +99,24 @@ describe('routex', () => {
     };
 
     expect(route).toMatchObject(expected);
+  });
+
+  test('should add many route definitions', () => {
+    const { routes } = routex()
+      .add({ name: 'first-route' })
+      .add({ name: 'second-route' });
+
+    expect(routes.length).toBe(2);
+  });
+
+  test('should throw an Error if route name already exists', () => {
+    const routeName = 'repeated-route';
+
+    expect(() =>
+      routex()
+        .add({ name: routeName })
+        .add({ name: routeName })
+    ).toThrow(new Error(`This route name already exists: ${routeName}`));
   });
 });
 
