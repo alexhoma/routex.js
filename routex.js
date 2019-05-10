@@ -4,8 +4,10 @@ import React from 'react';
 function createRoute(definition) {
   const { name, pattern, page } = definition;
 
-  const routePattern = `/${pattern || name}`;
-  const routePage = name !== 'index' ? `/${page || name}` : '/';
+  const routePattern = `/${pattern || name}`.replace(/^\/\//, '/');
+  const routePage = `/${page || name}`
+    .replace(/^\/index$/, '/')
+    .replace(/^\/\//, '/');
 
   return {
     name,
@@ -35,9 +37,12 @@ function routex({ Link = NextLink } = {}) {
   }
 
   function getLinkComponent() {
-    const RoutexLink = props => (
-      <Link as="a-route-pattern" href="a-route-page" {...props} />
-    );
+    const RoutexLink = props => {
+      const { route } = props;
+      const { pattern, page } = findByName(route);
+
+      return <Link as={pattern} href={page} {...props} />;
+    };
 
     return RoutexLink;
   }

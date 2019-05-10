@@ -66,7 +66,38 @@ describe('routex', () => {
     ).toThrow(new Error(`This routeName already exists: ${routeName}`));
   });
 
-  test('should replace route definition to slash when equals to "index"', () => {
+  test('route definition pattern should not start with more than one slash', () => {
+    const { routes } = routex().add({
+      name: 'a-route-name',
+      pattern: '/a-route-pattern'
+    });
+    const route = routes[0];
+    const expected = {
+      name: 'a-route-name',
+      pattern: '/a-route-pattern',
+      page: '/a-route-name'
+    };
+
+    expect(route).toMatchObject(expected);
+  });
+
+  test('route definition page should not start with more than one slash', () => {
+    const { routes } = routex().add({
+      name: 'a-route-name',
+      pattern: '/a-route-pattern',
+      page: '/a-route-page'
+    });
+    const route = routes[0];
+    const expected = {
+      name: 'a-route-name',
+      pattern: '/a-route-pattern',
+      page: '/a-route-page'
+    };
+
+    expect(route).toMatchObject(expected);
+  });
+
+  test('should replace route definition name to slash when equals to "index"', () => {
     const { routes } = routex().add({
       name: 'index'
     });
@@ -83,9 +114,11 @@ describe('routex', () => {
 
 describe('RoutexLink ', () => {
   test('should have a Link component that renders its children correctly', () => {
-    const { Link } = routex();
+    const { Link } = routex().add({
+      name: 'a-route-name'
+    });
     const tree = renderer.render(
-      <Link>
+      <Link route="a-route-name">
         <a>Anchor text</a>
       </Link>
     );
@@ -93,8 +126,8 @@ describe('RoutexLink ', () => {
     expect(tree.props.children.type).toBe('a');
   });
 
-  test('should return a Link with "as" and "href" properties', () => {
-    const { Link } = routex().add({
+  test('should return a Link with "as" and "href" properties matching with the route definition', () => {
+    const { Link, routes } = routex().add({
       name: 'a-route-name',
       pattern: '/a-route-pattern',
       page: 'a-route-page'
@@ -105,7 +138,8 @@ describe('RoutexLink ', () => {
       </Link>
     );
 
-    expect(tree.props.as).toBe('a-route-pattern');
-    expect(tree.props.href).toBe('a-route-page');
+    expect(tree.props.route).toBe('a-route-name');
+    expect(tree.props.as).toBe('/a-route-pattern');
+    expect(tree.props.href).toBe('/a-route-page');
   });
 });
