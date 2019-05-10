@@ -5,18 +5,19 @@
   "source": "routex.js",
   "main": "dist/routex.js",
   "module": "dist/routex.mjs",
-  "scripts": {
-    "build": "microbundle",
-    "test": "jest"
-  },
+  "author": "alexhoma <alexcm.14@gmail.com>",
+  "license": "ISC",
   "keywords": [
     "routes",
     "dynamic-routes",
     "next.js",
     "next"
   ],
-  "author": "alexhoma <alexcm.14@gmail.com>",
-  "license": "ISC",
+  "scripts": {
+    "build": "microbundle",
+    "test": "jest",
+    "size": "bundlesize"
+  },
   "peerDependencies": {
     "next": ">=2",
     "react": "^15.4.2 || ^16"
@@ -25,6 +26,7 @@
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "babel-jest": "^24.8.0",
+    "bundlesize": "^0.17.1",
     "jest": "^24.8.0",
     "microbundle": "^0.11.0",
     "next": "^8.1.0",
@@ -34,5 +36,11 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.0.0"
-  }
+  },
+  "bundlesize": [
+    {
+      "path": "./dist/routex.js",
+      "maxSize": "1 kB"
+    }
+  ]
 }
