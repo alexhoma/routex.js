@@ -81,8 +81,8 @@ describe('routex', () => {
   });
 });
 
-describe('routes Link', () => {
-  test('should have a Link component that renders an <a />', () => {
+describe('RoutexLink ', () => {
+  test('should have a Link component that renders its children correctly', () => {
     const { Link } = routex();
     const tree = renderer.render(
       <Link>
@@ -90,6 +90,22 @@ describe('routes Link', () => {
       </Link>
     );
 
-    expect(tree.type).toBe('a');
+    expect(tree.props.children.type).toBe('a');
+  });
+
+  test('should return a Link with "as" and "href" properties', () => {
+    const { Link } = routex().add({
+      name: 'a-route-name',
+      pattern: '/a-route-pattern',
+      page: 'a-route-page'
+    });
+    const tree = renderer.render(
+      <Link route="a-route-name">
+        <a>Anchor text</a>
+      </Link>
+    );
+
+    expect(tree.props.as).toBe('a-route-pattern');
+    expect(tree.props.href).toBe('a-route-page');
   });
 });

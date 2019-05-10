@@ -35,7 +35,11 @@ function routex({ Link = NextLink } = {}) {
   }
 
   function getLinkComponent() {
-    return Link;
+    const RoutexLink = props => (
+      <Link as="a-route-pattern" href="a-route-page" {...props} />
+    );
+
+    return RoutexLink;
   }
 
   return {
