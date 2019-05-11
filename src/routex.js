@@ -30,7 +30,7 @@ function createRoute({ name, pattern = name, page = name }) {
   };
 }
 
-function routex({ Link = NextLink } = {}) {
+function routex(createLink) {
   let routes = [];
 
   function findByName(name) {
@@ -54,7 +54,15 @@ function routex({ Link = NextLink } = {}) {
     return this;
   }
 
-  function getLinkComponent() {
+  return {
+    add,
+    routes,
+    Link: createLink(findByName)
+  };
+}
+
+export default function({ Link = NextLink } = {}) {
+  function createLink(findByName) {
     const RoutexLink = props => {
       const { route, params } = props;
 
@@ -71,11 +79,5 @@ function routex({ Link = NextLink } = {}) {
     return RoutexLink;
   }
 
-  return {
-    add,
-    routes,
-    Link: getLinkComponent()
-  };
+  return routex(createLink);
 }
-
-export default routex;

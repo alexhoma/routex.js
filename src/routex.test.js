@@ -120,7 +120,7 @@ describe('routex', () => {
   });
 });
 
-describe('RoutexLink ', () => {
+describe('RoutexLink', () => {
   test('should have a Link with default props when route prop is not defined', () => {
     const { Link } = routex();
 
