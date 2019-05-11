@@ -1,5 +1,6 @@
 import NextLink from 'next/link';
 import React from 'react';
+import pathToRegexp from 'path-to-regexp';
 
 function createRoute({ name, pattern = name, page = name }) {
   const routePattern = `/${pattern}`.replace(/^\/\//, '/');

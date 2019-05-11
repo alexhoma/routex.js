@@ -133,7 +133,7 @@ describe('RoutexLink ', () => {
     expect(tree.props.children.type).toBe('a');
   });
 
-  test('should return a Link with "as" and "href" properties matching with the route definition', () => {
+  test('should return a Link with properties matching with the route definition', () => {
     const { Link, routes } = routex().add({
       name: 'a-route-name',
       pattern: '/a-route-pattern',

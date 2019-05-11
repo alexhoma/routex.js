@@ -2,7 +2,7 @@
   "name": "routex",
   "version": "1.0.0",
   "description": "Dynamic routes for Next.js",
-  "source": "routex.js",
+  "source": "src/routex.js",
   "main": "dist/routex.js",
   "module": "dist/routex.mjs",
   "author": "alexhoma <alexcm.14@gmail.com>",
@@ -41,7 +41,8 @@
     "react-test-renderer": "^16.8.6"
   },
   "dependencies": {
-    "@babel/preset-react": "^7.0.0"
+    "@babel/preset-react": "^7.0.0",
+    "path-to-regexp": "^3.0.0"
   },
   "bundlesize": [
     {
