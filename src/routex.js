@@ -54,9 +54,18 @@ function routex(createLink) {
     return this;
   }
 
+  function getRequestHandler(nextApp) {
+    const nextRequestHandler = nextApp.getRequestHandler();
+
+    return function(req, res) {
+      return nextRequestHandler();
+    };
+  }
+
   return {
     add,
     routes,
+    getRequestHandler,
     Link: createLink(findByName)
   };
 }

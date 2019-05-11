@@ -182,3 +182,41 @@ describe('RoutexLink', () => {
     expect(tree.props.href).toBe('/a-route-page');
   });
 });
+
+describe('Request handler', () => {
+  const app = {
+    render: jest.fn(),
+    getRequestHandler: () => jest.fn()
+  };
+
+  test('should return a getRequestHandler function', () => {
+    const { getRequestHandler } = routex();
+
+    expect(getRequestHandler).toBeDefined();
+  });
+
+  test('should return the nextRequestHandler function', () => {
+    const nextRequestHandler = jest.fn();
+    const nextApp = {
+      render: jest.fn(),
+      getRequestHandler: () => nextRequestHandler
+    };
+
+    const httpHandler = {
+      req: {
+        url: '/a-route-url'
+      },
+      res: {}
+    };
+
+    const { routes, getRequestHandler } = routex().add({
+      name: 'a-route-name'
+    });
+
+    const { req, res } = httpHandler;
+
+    const handler = getRequestHandler(nextApp)();
+
+    expect(nextRequestHandler).toHaveBeenCalled();
+  });
+});
