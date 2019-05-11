@@ -165,4 +165,20 @@ describe('RoutexLink ', () => {
     expect(tree.props.as).toBe('/a-route-pattern-with-resolvedParam');
     expect(tree.props.href).toBe('/a-route-page?param=resolvedParam');
   });
+
+  test('should return a Link with a resolved route pattern with optional parameter', () => {
+    const { Link, routes } = routex().add({
+      name: 'a-route-name',
+      pattern: '/a-route-pattern-with-optional-:param?',
+      page: 'a-route-page'
+    });
+    const tree = renderer.render(
+      <Link route="a-route-name">
+        <a>Anchor text</a>
+      </Link>
+    );
+
+    expect(tree.props.as).toBe('/a-route-pattern-with-optional');
+    expect(tree.props.href).toBe('/a-route-page');
+  });
 });
