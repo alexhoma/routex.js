@@ -1,15 +1,32 @@
 import NextLink from 'next/link';
 import React from 'react';
+import toQueryString from './toQueryString';
 import pathToRegexp from 'path-to-regexp';
 
 function createRoute({ name, pattern = name, page = name }) {
-  const routePattern = `/${pattern}`.replace(/^\/\//, '/');
-  const routePage = `/${page}`.replace(/^\/index$/, '/').replace(/^\/\//, '/');
+  const routePattern = `/${pattern}`.replace(/^(\/\/)/, '/');
+  const routePage = `/${page}`
+    .replace(/^(\/index)$/, '/')
+    .replace(/^(\/\/)/, '/');
+
+  const regex = pathToRegexp(routePattern);
+  const toPath = pathToRegexp.compile(pattern);
+
+  function getComputedProps(params = {}) {
+    const as = toPath(params);
+    const href = `${routePage}${toQueryString(params)}`;
+
+    return {
+      as,
+      href
+    };
+  }
 
   return {
     name,
     pattern: routePattern,
-    page: routePage
+    page: routePage,
+    getComputedProps
   };
 }
 
@@ -39,15 +56,16 @@ function routex({ Link = NextLink } = {}) {
 
   function getLinkComponent() {
     const RoutexLink = props => {
-      const { route } = props;
+      const { route, params } = props;
 
       if (!route) {
         return <Link {...props} />;
       }
 
-      const { pattern, page } = findByName(route);
+      const foundRoute = findByName(route);
+      const { as, href } = foundRoute.getComputedProps(params);
 
-      return <Link as={pattern} href={page} {...props} />;
+      return <Link as={as} href={href} {...props} />;
     };
 
     return RoutexLink;
