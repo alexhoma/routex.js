@@ -184,18 +184,13 @@ describe('RoutexLink', () => {
 });
 
 describe('Request handler', () => {
-  const app = {
-    render: jest.fn(),
-    getRequestHandler: () => jest.fn()
-  };
-
   test('should return a getRequestHandler function', () => {
     const { getRequestHandler } = routex();
 
     expect(getRequestHandler).toBeDefined();
   });
 
-  test('should return the nextRequestHandler function', () => {
+  test('should call nextRequestHandler with request and response as params', () => {
     const nextRequestHandler = jest.fn();
     const nextApp = {
       render: jest.fn(),
@@ -209,14 +204,11 @@ describe('Request handler', () => {
       res: {}
     };
 
-    const { routes, getRequestHandler } = routex().add({
-      name: 'a-route-name'
-    });
+    const { routes, getRequestHandler } = routex();
 
     const { req, res } = httpHandler;
+    getRequestHandler(nextApp)(req, res);
 
-    const handler = getRequestHandler(nextApp)();
-
-    expect(nextRequestHandler).toHaveBeenCalled();
+    expect(nextRequestHandler).toHaveBeenCalledWith(req, res);
   });
 });

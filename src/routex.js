@@ -58,7 +58,7 @@ function routex(createLink) {
     const nextRequestHandler = nextApp.getRequestHandler();
 
     return function(req, res) {
-      return nextRequestHandler();
+      return nextRequestHandler(req, res);
     };
   }
 
