@@ -2,6 +2,7 @@ import NextLink from 'next/link';
 import React from 'react';
 import toQueryString from './toQueryString';
 import pathToRegexp from 'path-to-regexp';
+import { parse } from 'url';
 
 function createRoute({ name, pattern = name, page = name }) {
   const routePattern = `/${pattern}`.replace(/^(\/\/)/, '/');
@@ -54,18 +55,9 @@ function routex(createLink) {
     return this;
   }
 
-  function getRequestHandler(nextApp) {
-    const nextRequestHandler = nextApp.getRequestHandler();
-
-    return function(req, res) {
-      return nextRequestHandler(req, res);
-    };
-  }
-
   return {
     add,
     routes,
-    getRequestHandler,
     Link: createLink(findByName)
   };
 }

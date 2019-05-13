@@ -1,7 +1,7 @@
 {
   "name": "routex",
   "version": "1.0.0",
-  "description": "Dynamic routes for Next.js",
+  "description": "Tiny library to manage dynamic routes in Next.js",
   "source": "src/routex.js",
   "main": "dist/routex.js",
   "module": "dist/routex.mjs",
@@ -20,7 +20,8 @@
     "isomorphic"
   ],
   "scripts": {
-    "build": "microbundle",
+    "build:client": "microbundle",
+    "build:server": "microbundle",
     "test": "jest",
     "size": "bundlesize"
   },
@@ -31,6 +32,7 @@
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
     "babel-jest": "^24.8.0",
     "bundlesize": "^0.17.1",
     "jest": "^24.8.0",
@@ -41,7 +43,6 @@
     "react-test-renderer": "^16.8.6"
   },
   "dependencies": {
-    "@babel/preset-react": "^7.0.0",
     "path-to-regexp": "^3.0.0"
   },
   "bundlesize": [

@@ -1,4 +1,4 @@
-import routex from './routex';
+import routex from './client';
 import React from 'react';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
 
@@ -134,7 +134,7 @@ describe('RoutexLink', () => {
   });
 
   test('should return a Link with properties matching with the route definition', () => {
-    const { Link, routes } = routex().add({
+    const { Link } = routex().add({
       name: 'a-route-name',
       pattern: '/a-route-pattern',
       page: 'a-route-page'
@@ -151,7 +151,7 @@ describe('RoutexLink', () => {
   });
 
   test('should return a Link with a resolved route pattern', () => {
-    const { Link, routes } = routex().add({
+    const { Link } = routex().add({
       name: 'a-route-name',
       pattern: '/a-route-pattern-with-:param',
       page: 'a-route-page'
@@ -167,7 +167,7 @@ describe('RoutexLink', () => {
   });
 
   test('should return a Link with a resolved route pattern with optional parameter', () => {
-    const { Link, routes } = routex().add({
+    const { Link } = routex().add({
       name: 'a-route-name',
       pattern: '/a-route-pattern-with-optional-:param?',
       page: 'a-route-page'
@@ -180,35 +180,5 @@ describe('RoutexLink', () => {
 
     expect(tree.props.as).toBe('/a-route-pattern-with-optional');
     expect(tree.props.href).toBe('/a-route-page');
-  });
-});
-
-describe('Request handler', () => {
-  test('should return a getRequestHandler function', () => {
-    const { getRequestHandler } = routex();
-
-    expect(getRequestHandler).toBeDefined();
-  });
-
-  test('should call nextRequestHandler with request and response as params', () => {
-    const nextRequestHandler = jest.fn();
-    const nextApp = {
-      render: jest.fn(),
-      getRequestHandler: () => nextRequestHandler
-    };
-
-    const httpHandler = {
-      req: {
-        url: '/a-route-url'
-      },
-      res: {}
-    };
-
-    const { routes, getRequestHandler } = routex();
-
-    const { req, res } = httpHandler;
-    getRequestHandler(nextApp)(req, res);
-
-    expect(nextRequestHandler).toHaveBeenCalledWith(req, res);
   });
 });
