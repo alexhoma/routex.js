@@ -13,7 +13,7 @@ describe('Routex/server/requestHandler', () => {
     expect(getRequestHandler).toBeDefined();
   });
 
-  test('should call next requestHandler with request, response and parsedUrl', () => {
+  test('should call next requestHandler when route does not exist in route definitions', () => {
     const httpHandler = {
       req: {
         url: '/a-route-url'
