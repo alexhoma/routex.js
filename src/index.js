@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import React from 'react';
+import { createElement } from 'react';
 import toQueryString from './to-query-string';
 import pathToRegexp from 'path-to-regexp';
 
@@ -92,13 +92,13 @@ export default function({ Link = NextLink } = {}) {
       const { route, params } = props;
 
       if (!route) {
-        return <Link {...props} />;
+        return createElement(Link, { ...props });
       }
 
       const foundRoute = findByName(route);
       const { as, href } = foundRoute.getComputedProps(params);
 
-      return <Link as={as} href={href} {...props} />;
+      return createElement(Link, { as, href, ...props });
     };
 
     return RoutexLink;
