@@ -1,5 +1,5 @@
-import { parse } from 'url';
-import { createRoute } from '.';
+const { parse } = require('url');
+const { createRoute } = require('./index');
 const pathToRegexp = require('path-to-regexp');
 
 function matchRoute(routes, pathname) {
@@ -30,11 +30,16 @@ function getRequestHandler(nextApp, routesDefinitions = []) {
     const { page, params } = matchRoute(routes, pathname);
 
     if (page) {
-      return nextApp.render(req, res, page, params);
+      const pageParams = {
+        ...params,
+        ...parsedUrl.query
+      };
+
+      return nextApp.render(req, res, page, pageParams);
     }
 
     return nextRequestHandler(req, res, parsedUrl);
   };
 }
 
-export default getRequestHandler;
+module.exports = getRequestHandler;

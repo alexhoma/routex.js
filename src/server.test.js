@@ -28,12 +28,43 @@ describe('Routex/server/requestHandler', () => {
     expect(nextRequestHandler).toHaveBeenCalledWith(req, res, parsedUrl);
   });
 
-  test('should call next render when given route exists in route definitions', () => {
+  test('should call next render when given route exists', () => {
     const httpHandler = {
       req: {
-        url: '/a-route-pattern-hello',
+        url: '/a-route-pattern',
+        query: {}
+      },
+      res: {}
+    };
+
+    const { req, res } = httpHandler;
+
+    const routes = [
+      {
+        name: 'a-route-name',
+        pattern: 'a-route-pattern',
+        page: '/a-route-page'
+      }
+    ];
+
+    const matchedRoute = routes[0];
+    getRequestHandler(nextApp, routes)(req, res);
+
+    expect(nextRender).toHaveBeenCalledWith(
+      req,
+      res,
+      matchedRoute.page,
+      req.query
+    );
+  });
+
+  test('should call next render when given route exists with route path params', () => {
+    const httpHandler = {
+      req: {
+        url: '/a-route-pattern-firstParam-secondParam',
         query: {
-          param: 'hello'
+          param1: 'firstParam',
+          param2: 'secondParam'
         }
       },
       res: {}
@@ -43,7 +74,38 @@ describe('Routex/server/requestHandler', () => {
     const routes = [
       {
         name: 'a-route-name',
-        pattern: 'a-route-pattern-:param',
+        pattern: 'a-route-pattern-:param1-:param2',
+        page: '/a-route-page'
+      }
+    ];
+
+    const matchedRoute = routes[0];
+    getRequestHandler(nextApp, routes)(req, res);
+
+    expect(nextRender).toHaveBeenCalledWith(
+      req,
+      res,
+      matchedRoute.page,
+      req.query
+    );
+  });
+
+  test('should call next render when given route exists with additional query params', () => {
+    const httpHandler = {
+      req: {
+        url: '/a-route-pattern?q=queryParam',
+        query: {
+          q: 'queryParam'
+        }
+      },
+      res: {}
+    };
+    const { req, res } = httpHandler;
+
+    const routes = [
+      {
+        name: 'a-route-name',
+        pattern: 'a-route-pattern',
         page: '/a-route-page'
       }
     ];
