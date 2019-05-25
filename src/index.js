@@ -1,16 +1,16 @@
 import NextLink from 'next/link';
 import React from 'react';
-import toQueryString from './toQueryString';
+import toQueryString from './to-query-string';
 import pathToRegexp from 'path-to-regexp';
-import { parse } from 'url';
 
-function createRoute({ name, pattern = name, page = name }) {
+export function createRoute({ name, pattern = name, page = name }) {
   const routePattern = `/${pattern}`.replace(/^(\/\/)/, '/');
   const routePage = `/${page}`
     .replace(/^(\/index)$/, '/')
     .replace(/^(\/\/)/, '/');
 
-  const regex = pathToRegexp(routePattern);
+  const keys = [];
+  const regex = pathToRegexp(routePattern, keys);
   const toPath = pathToRegexp.compile(pattern);
 
   function getComputedProps(params = {}) {
@@ -23,11 +23,35 @@ function createRoute({ name, pattern = name, page = name }) {
     };
   }
 
+  function match(pathname) {
+    const matched = regex.exec(pathname);
+
+    if (!matched) {
+      return null;
+    }
+
+    const matchedRouteKeys = matched.slice(1);
+
+    function transformParamsToObject(parameters, param, i) {
+      if (param === undefined) {
+        return parameters;
+      }
+
+      return {
+        ...parameters,
+        [keys[i].name]: decodeURIComponent(param)
+      };
+    }
+
+    return matchedRouteKeys.reduce(transformParamsToObject, {});
+  }
+
   return {
     name,
     pattern: routePattern,
     page: routePage,
-    getComputedProps
+    getComputedProps,
+    match
   };
 }
 

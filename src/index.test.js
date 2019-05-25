@@ -1,4 +1,4 @@
-import routex from './client';
+import routex from '.';
 import React from 'react';
 import ReactShallowRenderer from 'react-test-renderer/shallow';
 
