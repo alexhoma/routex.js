@@ -1,6 +1,5 @@
 const { parse } = require('url');
 const { createRoute } = require('./index');
-const pathToRegexp = require('path-to-regexp');
 
 function matchRoute(routes, pathname) {
   return routes.reduce(function extractRouteDescription(result, route) {

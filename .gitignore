@@ -1,4 +1,11 @@
-dist/
-coverage/
-example/
+dist
+example
+
+# istambul
+coverage
+
+# stryker
+reports
+
+# npm
 node_modules
