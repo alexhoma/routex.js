@@ -1,6 +1,8 @@
 # Routex
 
-Dynamic routes for Next.js
+[WIP] Dynamic routes for Next.js
+
+> This is a Work in progress library
 
 ## Setup
 
@@ -8,19 +10,6 @@ Dynamic routes for Next.js
 npm i routex
 ```
 
-## Examples
+## Additional content
 
-```javascript
-import routex from 'routex';
-
-const wrapper = routex();
-
-wrapper
-  .add({ name: 'index' })
-  .add({ name: 'about' })
-  .add({
-    name: 'blog',
-    pattern: '/blog/:post',
-    page: 'blog-index'
-  });
-```
+- [Simple example](./docs/example.md)
