@@ -1,14 +1,14 @@
 # Routex
 
-[WIP] Dynamic routes for Next.js
-
-> This is a Work in progress library
+Dynamic routes for Next.js
 
 ## Setup
 
 ```
-npm i routex
+npm i routex.js
 ```
+
+## Motivation
 
 ## Additional content
 

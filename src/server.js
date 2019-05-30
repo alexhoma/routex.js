@@ -1,5 +1,43 @@
-const { parse } = require('url');
-const { createRoute } = require('./index');
+import { parse } from 'url';
+import pathToRegexp from 'path-to-regexp';
+
+function createRoute({ name, pattern = name, page = name }) {
+  const routePattern = `/${pattern}`.replace(/^(\/\/)/, '/');
+  const routePage = `/${page}`
+    .replace(/^(\/index)$/, '/')
+    .replace(/^(\/\/)/, '/');
+
+  const keys = [];
+  const regex = pathToRegexp(routePattern, keys);
+
+  function match(pathname) {
+    const matched = regex.exec(pathname);
+
+    if (!matched) {
+      return null;
+    }
+
+    const matchedRouteKeys = matched.slice(1);
+
+    function transformParamsToObject(parameters, param, i) {
+      if (param === undefined) {
+        return parameters;
+      }
+
+      return {
+        ...parameters,
+        [keys[i].name]: decodeURIComponent(param)
+      };
+    }
+
+    return matchedRouteKeys.reduce(transformParamsToObject, {});
+  }
+
+  return {
+    match,
+    page: routePage
+  };
+}
 
 function matchRoute(routes, pathname) {
   return routes.reduce(function extractRouteDescription(result, route) {
@@ -41,4 +79,4 @@ function getRequestHandler(nextApp, routesDefinitions = []) {
   };
 }
 
-module.exports = getRequestHandler;
+export default getRequestHandler;

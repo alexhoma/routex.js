@@ -8,7 +8,7 @@ const nextApp = {
   getRequestHandler: () => nextRequestHandler
 };
 
-describe('routex/server/requestHandler', () => {
+describe('server/getRequestHandler', () => {
   test('should return a getRequestHandler function', () => {
     expect(getRequestHandler).toBeDefined();
   });

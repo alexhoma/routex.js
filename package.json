@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "description": "Tiny library to manage dynamic and universal routes in Next.js",
   "source": "src/index.js",
-  "main": "dist/routex.js",
   "module": "dist/routex.es.js",
+  "main": "dist/routex.js",
+  "umd:main": "dist/routex.umd.js",
   "author": "alexhoma <alexcm.14@gmail.com>",
+  "repository": "alexhom/routex.js",
   "license": "ISC",
   "keywords": [
     "next",
@@ -20,13 +22,11 @@
     "isomorphic"
   ],
   "scripts": {
-    "build:client": "microbundle",
-    "build:server": "microbundle ./src/server.js -o ./dist/routex/server.js --external server",
-    "build:universal": "npm run build:client && npm run build:server",
+    "build": "microbundle",
     "test": "jest",
     "mutants": "stryker run",
     "size": "bundlesize",
-    "prepare": "npm t -- --coverage && npm run build:universal && npm run size",
+    "prepare": "npm t -- --coverage && npm run build && npm run size",
     "release": "npm run prepare && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
   },
   "peerDependencies": {
@@ -57,10 +57,6 @@
     {
       "path": "./dist/routex.js",
       "maxSize": "1 Kb"
-    },
-    {
-      "path": "./dist/routex/server.js",
-      "maxSize": "400 B"
     }
   ]
 }
