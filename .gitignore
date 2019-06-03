@@ -1,7 +1,7 @@
 dist
 example
 _client.js
-_client.test.js
+_client._.js
 
 # istambul
 coverage

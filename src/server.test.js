@@ -9,10 +9,6 @@ const nextApp = {
 };
 
 describe('server/getRequestHandler', () => {
-  test('should return a getRequestHandler function', () => {
-    expect(getRequestHandler).toBeDefined();
-  });
-
   test('should call next requestHandler when route does not exist in route definitions', () => {
     const httpHandler = {
       req: {

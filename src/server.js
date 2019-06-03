@@ -60,7 +60,7 @@ function getRequestHandler(nextApp, routesDefinitions = []) {
 
   // This returns a middleware function
   // that will be executed by your node server
-  return function routexMiddleware(req, res) {
+  return function requestHandler(req, res) {
     const parsedUrl = parse(req.url, true);
     const pathname = decodeURIComponent(parsedUrl.pathname);
 
