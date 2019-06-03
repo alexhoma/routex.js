@@ -1,8 +1,8 @@
-import createRoutesProvider from './client';
+import createRouteLinks from './client';
 import getRequestHandler from './server';
 
 const routex = {
-  createRoutesProvider,
+  createRouteLinks,
   getRequestHandler
 };
 
