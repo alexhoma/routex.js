@@ -10,7 +10,7 @@ describe('client/createRouteLinks', () => {
   });
 
   test('should throw an error if a route name is not defined', () => {
-    const routes = [{ name: 'a-route-name' }, { pattern: 'a-route-pattern' }];
+    const routes = [{ name: 'a-route-name' }, { pattern: '/a-route-pattern' }];
 
     expect(() => createRouteLinks(routes)).toThrow(
       new Error(`A route name must be defined`)
@@ -47,7 +47,7 @@ describe('client/createRouteLinks', () => {
     });
 
     test('should return link props given a route definition with a name and pattern', () => {
-      const routes = [{ name: 'a-route-name', pattern: 'a-route-pattern' }];
+      const routes = [{ name: 'a-route-name', pattern: '/a-route-pattern' }];
       const { link } = createRouteLinks(routes);
 
       const expected = {
@@ -66,8 +66,30 @@ describe('client/createRouteLinks', () => {
       const routes = [
         {
           name: 'a-route-name',
-          pattern: 'a-route-pattern',
-          page: 'a-route-page'
+          pattern: '/a-route-pattern',
+          page: '/a-route-page'
+        }
+      ];
+      const { link } = createRouteLinks(routes);
+
+      const expected = {
+        as: '/a-route-pattern',
+        href: '/a-route-page'
+      };
+
+      expect(
+        link({
+          route: 'a-route-name'
+        })
+      ).toEqual(expected);
+    });
+
+    test('link properties should not have more than one starting slash', () => {
+      const routes = [
+        {
+          name: 'a-route-name',
+          pattern: '/a-route-pattern',
+          page: '/a-route-page'
         }
       ];
       const { link } = createRouteLinks(routes);
