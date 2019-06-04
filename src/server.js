@@ -19,18 +19,21 @@ function createRoute({ name, pattern = name, page = name }) {
 
     const matchedRouteKeys = matched.slice(1);
 
-    function transformParamsToObject(parameters, param, i) {
+    return matchedRouteKeys.reduce(function transformParamsToObject(
+      parameters,
+      param,
+      key
+    ) {
       if (param === undefined) {
         return parameters;
       }
 
       return {
         ...parameters,
-        [keys[i].name]: decodeURIComponent(param)
+        [keys[key].name]: decodeURIComponent(param)
       };
-    }
-
-    return matchedRouteKeys.reduce(transformParamsToObject, {});
+    },
+    {});
   }
 
   return {
