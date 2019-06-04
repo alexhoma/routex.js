@@ -29,26 +29,17 @@
     "prepare": "npm t -- --coverage && npm run build && npm run size",
     "release": "npm run prepare && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
   },
-  "peerDependencies": {
-    "next": ">=2",
-    "react": "^15.4.2 || ^16"
-  },
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "@stryker-mutator/core": "^2.0.0",
     "@stryker-mutator/html-reporter": "^2.0.0",
     "@stryker-mutator/javascript-mutator": "^2.0.0",
     "@stryker-mutator/jest-runner": "^2.0.0",
     "babel-jest": "^24.8.0",
-    "bundlesize": "^0.17.1",
+    "bundlesize": "^0.17.2",
     "jest": "^24.8.0",
-    "microbundle": "^0.11.0",
-    "next": "^8.1.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-test-renderer": "^16.8.6"
+    "microbundle": "^0.11.0"
   },
   "dependencies": {
     "path-to-regexp": "^3.0.0"
