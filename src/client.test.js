@@ -105,5 +105,21 @@ describe('client/createRouteLinks', () => {
         })
       ).toEqual(expected);
     });
+
+    test('link "as" property should be a slash when route definition name is equal to "index"', () => {
+      const routes = [{ name: 'index' }];
+      const { link } = createRouteLinks(routes);
+
+      const expected = {
+        as: '/',
+        href: '/index'
+      };
+
+      expect(
+        link({
+          route: 'index'
+        })
+      ).toEqual(expected);
+    });
   });
 });

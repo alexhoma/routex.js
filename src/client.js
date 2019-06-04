@@ -7,8 +7,12 @@ function createRouteLinks(routeDefinitions) {
     return `/${string}`.replace(/^(\/\/)/, '/');
   }
 
+  function replaceIndexRoute(string) {
+    return string.replace(/^(\/index)$/, '/');
+  }
+
   function createRoute({ name, pattern = name, page = name }) {
-    const routePattern = replaceStartingSlash(pattern);
+    const routePattern = replaceIndexRoute(replaceStartingSlash(pattern));
     const routePage = replaceStartingSlash(page);
 
     return {
