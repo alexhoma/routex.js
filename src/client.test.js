@@ -30,6 +30,14 @@ describe('client/createRouteLinks', () => {
   });
 
   describe('link', () => {
+    test('should throw an error if no route given', () => {
+      const { link } = createRouteLinks([]);
+
+      expect(() => link({ route: undefined })).toThrow(
+        new Error(`Function link() should have a route name`)
+      );
+    });
+
     test('should return link props given a route definition with a name', () => {
       const routes = [{ name: 'a-route-name' }];
       const { link } = createRouteLinks(routes);
@@ -118,6 +126,33 @@ describe('client/createRouteLinks', () => {
       expect(
         link({
           route: 'index'
+        })
+      ).toEqual(expected);
+    });
+
+    test('should return link props with amatched route definition', () => {
+      const routes = [
+        {
+          name: 'a-route-name',
+          pattern: '/a-route-pattern',
+          page: '/a-route-page'
+        },
+        {
+          name: 'another-route-name',
+          pattern: '/another-route-pattern',
+          page: '/another-route-page'
+        }
+      ];
+      const { link } = createRouteLinks(routes);
+
+      const expected = {
+        as: '/another-route-pattern',
+        href: '/another-route-page'
+      };
+
+      expect(
+        link({
+          route: 'another-route-name'
         })
       ).toEqual(expected);
     });

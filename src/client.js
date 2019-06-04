@@ -1,6 +1,6 @@
 function createRouteLinks(routeDefinitions) {
-  function findRouteByName(routesList, route) {
-    return routesList.find(routeToFind => routeToFind.name === route.name);
+  function findRouteByName(routesList, routeName) {
+    return routesList.find(routeToFind => routeToFind.name === routeName);
   }
 
   function replaceStartingSlash(string) {
@@ -16,6 +16,7 @@ function createRouteLinks(routeDefinitions) {
     const routePage = replaceStartingSlash(page);
 
     return {
+      name,
       as: routePattern,
       href: routePage
     };
@@ -27,19 +28,23 @@ function createRouteLinks(routeDefinitions) {
         throw new Error(`A route name must be defined`);
       }
 
-      if (findRouteByName(accumulatedRoutes, route)) {
+      if (findRouteByName(accumulatedRoutes, route.name)) {
         throw new Error(`This route name is already defined: ${route.name}`);
       }
 
-      return [...routes, createRoute(route)];
+      return [...accumulatedRoutes, createRoute(route)];
     }, []);
   }
 
   const composedRoutes = composeRoutes(routeDefinitions);
 
   return {
-    link({ route }) {
-      const { as, href } = findRouteByName(composedRoutes, route);
+    link({ route: routeName }) {
+      if (!routeName) {
+        throw new Error(`Function link() should have a route name`);
+      }
+
+      const { as, href } = findRouteByName(composedRoutes, routeName);
 
       return {
         as,
