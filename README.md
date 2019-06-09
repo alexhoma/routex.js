@@ -10,6 +10,4 @@ npm i routex.js
 
 ## Motivation
 
-## Additional content
-
-- [Simple example](./docs/example.md)
+Todo

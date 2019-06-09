@@ -1,50 +1,80 @@
-function createRouteLinks(routeDefinitions) {
-  function findRouteByName(routesList, routeName) {
-    return routesList.find(routeToFind => routeToFind.name === routeName);
-  }
+import { compile } from 'path-to-regexp';
 
-  function replaceStartingSlash(string) {
-    return `/${string}`.replace(/^(\/\/)/, '/');
-  }
+function findRouteByName(routesList, routeName) {
+  return routesList.find(routeToFind => routeToFind.name === routeName);
+}
 
-  function replaceIndexRoute(string) {
-    return string.replace(/^(\/index)$/, '/');
-  }
+function replaceStartingSlash(string) {
+  return `/${string}`.replace(/^(\/\/)/, '/');
+}
 
-  function createRoute({ name, pattern = name, page = name }) {
-    const routePattern = replaceIndexRoute(replaceStartingSlash(pattern));
-    const routePage = replaceStartingSlash(page);
+function replaceIndexRoute(string) {
+  return string.replace(/^(\/index)$/, '/');
+}
+
+function paramsToQueryString(params) {
+  const queryString = Object.keys(params)
+    .filter(key => params[key] !== null && params[key] !== undefined)
+    .map(key => {
+      let value = params[key];
+
+      if (Array.isArray(value)) {
+        value = value.join('/');
+      }
+      return [encodeURIComponent(key), encodeURIComponent(value)].join('=');
+    })
+    .join('&');
+
+  return queryString ? `?${queryString}` : '';
+}
+
+function createRoute({ name, pattern = name, page = name }) {
+  const routePattern = replaceIndexRoute(replaceStartingSlash(pattern));
+  const routePage = replaceStartingSlash(page);
+
+  const toPath = compile(routePattern);
+
+  function getLinkProps(params) {
+    const as = toPath(params);
+    const href = `${routePage}${paramsToQueryString(params)}`;
 
     return {
-      name,
-      as: routePattern,
-      href: routePage
+      as,
+      href
     };
   }
 
-  function composeRoutes(routes) {
-    return routes.reduce((accumulatedRoutes, route) => {
-      if (!route.name) {
-        throw new Error(`A route name must be defined`);
-      }
+  return {
+    name,
+    getLinkProps
+  };
+}
 
-      if (findRouteByName(accumulatedRoutes, route.name)) {
-        throw new Error(`This route name is already defined: ${route.name}`);
-      }
+function composeRoutes(routes) {
+  return routes.reduce((accumulatedRoutes, route) => {
+    if (!route.name) {
+      throw new Error(`A route name must be defined`);
+    }
 
-      return [...accumulatedRoutes, createRoute(route)];
-    }, []);
-  }
+    if (findRouteByName(accumulatedRoutes, route.name)) {
+      throw new Error(`This route name is already defined: ${route.name}`);
+    }
 
+    return [...accumulatedRoutes, createRoute(route)];
+  }, []);
+}
+
+function createRouteLinks(routeDefinitions) {
   const composedRoutes = composeRoutes(routeDefinitions);
 
   return {
-    link({ route: routeName }) {
+    link({ route: routeName, params = {} }) {
       if (!routeName) {
         throw new Error(`Function link() should have a route name`);
       }
 
-      const { as, href } = findRouteByName(composedRoutes, routeName);
+      const foundRoute = findRouteByName(composedRoutes, routeName);
+      const { as, href } = foundRoute.getLinkProps(params);
 
       return {
         as,

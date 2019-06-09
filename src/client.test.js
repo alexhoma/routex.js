@@ -130,7 +130,7 @@ describe('client/createRouteLinks', () => {
       ).toEqual(expected);
     });
 
-    test('should return link props with amatched route definition', () => {
+    test('should return link props with a matched route definition', () => {
       const routes = [
         {
           name: 'a-route-name',
@@ -153,6 +153,52 @@ describe('client/createRouteLinks', () => {
       expect(
         link({
           route: 'another-route-name'
+        })
+      ).toEqual(expected);
+    });
+
+    test('should return link props with a resolved route pattern params', () => {
+      const routes = [
+        {
+          name: 'a-route-name',
+          pattern: '/a-route-pattern-with-:lang',
+          page: '/a-route-page'
+        }
+      ];
+      const { link } = createRouteLinks(routes);
+
+      const expected = {
+        as: '/a-route-pattern-with-javascript',
+        href: '/a-route-page?lang=javascript'
+      };
+
+      expect(
+        link({
+          route: 'a-route-name',
+          params: { lang: 'javascript' }
+        })
+      ).toEqual(expected);
+    });
+
+    test('should return link props with a resolved optional route pattern params', () => {
+      const routes = [
+        {
+          name: 'a-route-name',
+          pattern: '/a-route-pattern-with-:optionalLang?',
+          page: '/a-route-page'
+        }
+      ];
+      const { link } = createRouteLinks(routes);
+
+      const expected = {
+        as: '/a-route-pattern-with',
+        href: '/a-route-page'
+      };
+
+      expect(
+        link({
+          route: 'a-route-name',
+          params: { lang: undefined }
         })
       ).toEqual(expected);
     });
