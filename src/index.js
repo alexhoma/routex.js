@@ -1,9 +1,7 @@
 import createRouteLinks from './client';
 import getRequestHandler from './server';
 
-const routex = {
+module.exports = {
   createRouteLinks,
   getRequestHandler
 };
-
-export default routex;

@@ -10,13 +10,8 @@ const { getRequestHandler } = require('../dist/routex');
 const routexHandlerMiddleware = getRequestHandler(nextApp, routes);
 
 nextApp.prepare().then(() => {
-  const server = express();
-
-  // Load the requestHandler middleware
-  server.use(routexHandlerMiddleware);
-
-  server.listen(3001, err => {
-    if (err) throw err;
-    console.log(`> Ready on http://localhost:3001`);
-  });
+  express()
+    // Load the requestHandler middleware
+    .use(routexHandlerMiddleware)
+    .listen(3001);
 });

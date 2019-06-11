@@ -1,6 +1,6 @@
-import routex from '.';
+import { getRequestHandler, createRouteLinks } from '.';
 
 test('routex entry points', () => {
-  expect(typeof routex.getRequestHandler).toBe('function');
-  expect(typeof routex.createRouteLinks).toBe('function');
+  expect(typeof getRequestHandler).toBe('function');
+  expect(typeof createRouteLinks).toBe('function');
 });
