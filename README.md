@@ -1,4 +1,4 @@
-# Routex ![][npm-version] ![][bundlephobia-min-badge] ![][bundlephobia-minzip-badge]
+# Routex.js ![][npm-version] ![][travis-build] ![][bundlephobia-min-badge] ![][bundlephobia-minzip-badge]
 
 Yes, another library to handle dynamic routes in Next.js
 
@@ -105,21 +105,24 @@ export default function MyApp() {
 }
 ```
 
-This is exactly the same if we provide to the Next's own `NextLink`
-the props `as` and `href` but in an easy way:
+The output that will return your `<CustomLink>` will be exactly the same that if
+you created a link using the current Next.js Link, like I'll show you in this example:
 
 ```javascript
 import NextLink from 'next/link';
 
-<NextLink as="/post/next-js-post" href="/post?slug=next-js-post">
-  <a>Next.js post link</a>
-</NextLink>;
+export default () => (
+  <NextLink as="/post/next-js-post" href="/post?slug=next-js-post">
+    <a>Next.js post link</a>
+  </NextLink>
+);
 ```
 
 > Also, you can call your link `<CustomLink>` or whatever you want it.
 > For more information have a look into the (example app)[./example] directory.
 
 [npm-version]: https://badgen.net/npm/v/routex.js
+[travis-build]: https://travis-ci.com/alexhoma/routex.js.svg?branch=master
 [bundlephobia-min-badge]: https://badgen.net/bundlephobia/min/routex.js
 [bundlephobia-minzip-badge]: https://badgen.net/bundlephobia/minzip/routex.js
 [next-routes]: https://github.com/fridays/next-routes 'fridays/next-routes'
