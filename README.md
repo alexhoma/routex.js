@@ -1,23 +1,33 @@
-# Routex.js ![][npm-version] ![][travis-build] ![][bundlephobia-min-badge] ![][bundlephobia-minzip-badge]
+# Routex.js
+
+![][npm-version] ![][travis-build] ![][bundlephobia-min-badge] ![][bundlephobia-minzip-badge]
 
 Yes, another library to handle dynamic routes in Next.js
 
-- :earth_africa: Universal
+- :earth_africa: Universal javascript
 - :leaves: Tree shakeable
-- :ant: Tiny for client side
-- :link: Build your custom `<Link />` on top
-- :tada: Same route api as [next-routes]
-- :sunglasses: Cool name
+- :ant: Tiny to not overload your client side bundle
+- :link: Build your custom `<Link />` on top of it
+- :tada: Same routes contract as [next-routes] `name, pattern, page`
+- :sunglasses: Cool name!
 
 Inspired by [next-routes] and [next-minimal-routes].
 
-## Setup
+## Install
 
 Install routex in your Next.js project:
 
 ```
 npm i routex.js
 ```
+
+Using yarn:
+
+```
+yarn add routex.js
+```
+
+## Setup
 
 Okay, so now we have installed routex. First of all we'll need to declare
 our application's route definitions. So let's create a `routes.js` file:
@@ -118,8 +128,24 @@ export default () => (
 );
 ```
 
-> Also, you can call your link `<CustomLink>` or whatever you want it.
-> For more information have a look into the (example app)[./example] directory.
+Currently, there is no imperative way to change your app route using `routex.js`,
+like the next-routes' `Router.pushRoute(route, params, options)`, because I didn't need it at all.
+But I'm open to add it if someone finds it interesting. Since then, I'll try to keep
+this library as simple as possible.
+
+> For more information have a look into the [example app](./example) directory.
+
+## Motivation
+
+I've been encouraged to write another Next.js routing library, even when
+there are similar libraries, not only to reinvent the weel :stuck_out_tongue_closed_eyes:,
+but to learn how dynamic routes are managed in an application made with Next.js. So I've decided
+to create my own.
+
+## Contributions
+
+If you want to suggest a change, feature or any question, feel free to open an issue
+to discuss it :)
 
 [npm-version]: https://badgen.net/npm/v/routex.js
 [travis-build]: https://travis-ci.com/alexhoma/routex.js.svg?branch=master
