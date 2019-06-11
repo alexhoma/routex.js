@@ -105,8 +105,8 @@ export default function MyApp() {
 }
 ```
 
-The output that will return your `<CustomLink>` will be exactly the same that if
-you created a link using the current Next.js Link, like I'll show you in this example:
+The output that will return your `<CustomLink />` will be exactly the same that if
+you create a link using the current Next.js Link, like I'll show you in this example:
 
 ```javascript
 import NextLink from 'next/link';
