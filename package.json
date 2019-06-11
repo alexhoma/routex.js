@@ -7,7 +7,7 @@
   "main": "dist/routex.js",
   "umd:main": "dist/routex.umd.js",
   "author": "alexhoma <alexcm.14@gmail.com>",
-  "repository": "alexhom/routex.js",
+  "repository": "alexhoma/routex.js",
   "license": "ISC",
   "keywords": [
     "next",

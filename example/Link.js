@@ -1,7 +1,7 @@
 import React from 'react';
 import NextLink from 'next/link';
+import { createRouteLinks } from 'routex.js';
 import routes from './routes';
-import { createRouteLinks } from '../dist/routex';
 
 const { link } = createRouteLinks(routes);
 
