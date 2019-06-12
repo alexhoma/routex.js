@@ -3,7 +3,7 @@ const next = require('next');
 const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({ dev });
 const routes = require('./routes');
-const { getRequestHandler } = require('../dist/routex');
+const { getRequestHandler } = require('routex.js');
 
 // Load your routes so next will know how to
 // handle requests and manage server side routing

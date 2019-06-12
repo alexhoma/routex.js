@@ -14,7 +14,7 @@
     "next": "^8.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "routex.js": "^0.1.1"
+    "routex.js": "^0.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
