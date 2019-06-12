@@ -4,9 +4,9 @@
 
 Yes, another library to handle dynamic routes in Next.js
 
-- :earth_africa: Universal javascript
+- :earth_africa: Universal
 - :leaves: Tree shakeable
-- :ant: Tiny to not overload your client side bundle
+- :ant: Small module
 - :link: Build your custom `<Link />` on top of it
 - :tada: Same routes contract as [next-routes] `name, pattern, page`
 - :sunglasses: Cool name!
@@ -29,6 +29,8 @@ yarn add routex.js
 
 ## Setup
 
+### Route definitions
+
 Okay, so now we have installed routex. First of all we'll need to declare
 our application's route definitions. So let's create a `routes.js` file:
 
@@ -45,6 +47,8 @@ module.exports = [
   }
 ];
 ```
+
+### Server `getRequestHandler()`
 
 Once routes are declared, we want to handle it whenever a user loads any existing url
 in our application. So here we need to create our routex `requestHandlerMiddleware` in our `server.js` file,
@@ -65,6 +69,8 @@ nextApp.prepare().then(() => {
     .listen(3000);
 });
 ```
+
+### Client `link()`
 
 Hooray! our server now handles dynamic routes. But now we need a way to create link
 components to point to that dynamic routes. So let's create a file `CustomLink.js` to use
@@ -98,21 +104,19 @@ And this is how you'll use your `<CustomLink />` component:
 ```javascript
 import CustomLink from './CustomLink';
 
-export default function MyApp() {
-  return (
-    <>
-      This is an example page component:
-      <CustomLink
-        route="post"
-        params={{
-          slug: 'next-js-post'
-        }}
-      >
-        Next.js post link
-      </Link>
-    </>
-  );
-}
+export default () => (
+  <>
+    This is an example page component:
+    <CustomLink
+      route="post"
+      params={{
+        slug: 'next-js-post'
+      }}
+    >
+      Next.js post link
+    </Link>
+  </>
+);
 ```
 
 The output that will return your `<CustomLink />` will be exactly the same that if
