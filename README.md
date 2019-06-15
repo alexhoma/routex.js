@@ -12,6 +12,7 @@
 - :ant: Not tiny, but pretty small
 - :link: Build your custom `<Link />` on top of it
 - :tada: Same routes contract as [next-routes] `name, pattern, page`
+- :rocket: Up to date `path-to-regexp` dependency
 - :sunglasses: Cool name!
 
 Inspired by [next-routes] and [next-minimal-routes].
@@ -146,6 +147,12 @@ But I'm open to add it if someone finds it interesting. Since then, I'll try to 
 I've decided to write another Next.js routing library, even when
 there are similar libraries already, not only to reinvent the weel hehe,
 but to learn how dynamic routes are managed in an application made with Next.js. Also, because I found that some similar libraries does not fit at all with what I was searching for when using dynamic routes.
+
+## Things to do
+
+- [ ] Add an example with multi-domain application
+- [ ] Since routex.js doesn't need React at all, add an example with other Next.js integrations, like Preact, inferno, etc.
+- [ ] Avoid loading all route definitions in client side, only the ones we use per page
  
 ## Contributions
 
