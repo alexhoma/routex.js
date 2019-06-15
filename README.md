@@ -1,12 +1,15 @@
-# Routex.js
+<h1 align="center">Routex.js</h1>
+<p align="center">Yes, another library to handle <strong>dynamic routes in Next.js</strong></p>
 
-![][npm-version] ![][travis-build] ![][bundlephobia-min-badge] ![][bundlephobia-minzip-badge]
+<p align="center"><a href="https://www.npmjs.com/package/routex.js"><img src="https://badgen.net/npm/v/routex.js"></a> <a href="https://travis-ci.com/alexhoma/routex.js"><img src="https://travis-ci.com/alexhoma/routex.js.svg?branch=master"></a> <a href="https://bundlephobia.com/result?p=routex.js"><img src="https://badgen.net/bundlephobia/min/routex.js"></a> <a href="https://bundlephobia.com/result?p=routex.js"><img src="https://badgen.net/bundlephobia/minzip/routex.js"></a></p>
 
-Yes, another library to handle dynamic routes in Next.js
+<br />
+
+## Features
 
 - :earth_africa: Universal
 - :leaves: Tree shakeable
-- :ant: Small module
+- :ant: Not tiny, but pretty small
 - :link: Build your custom `<Link />` on top of it
 - :tada: Same routes contract as [next-routes] `name, pattern, page`
 - :sunglasses: Cool name!
@@ -133,23 +136,20 @@ export default () => (
 ```
 
 Currently, there is no imperative way to change your app route using `routex.js`,
-like the next-routes' `Router.pushRoute(route, params, options)`, because I didn't need it at all.
-But I'm open to add it if someone finds it interesting. Since then, I'll try to keep
-this library as simple as possible.
+like the next-routes' `Router.pushRoute(route, params, options)`, because I didn't need it at all in my current applications.
+But I'm open to add it if someone finds it interesting. Since then, I'll try to keep this library as simple as possible.
 
 > For more information have a look into the [example app](./example) directory.
 
 ## Motivation
 
-I've been encouraged to write another Next.js routing library, even when
-there are similar libraries, not only to reinvent the weel :stuck_out_tongue_closed_eyes:,
-but to learn how dynamic routes are managed in an application made with Next.js. So I've decided
-to create my own.
-
+I've decided to write another Next.js routing library, even when
+there are similar libraries already, not only to reinvent the weel hehe,
+but to learn how dynamic routes are managed in an application made with Next.js. Also, because I found that some similar libraries does not fit at all with what I was searching for when using dynamic routes.
+ 
 ## Contributions
 
-If you want to suggest a change, feature or any question, feel free to open an issue
-to discuss it :)
+If you want to suggest a change, feature or any question, feel free to open an issue or a pull request.
 
 [npm-version]: https://badgen.net/npm/v/routex.js
 [travis-build]: https://travis-ci.com/alexhoma/routex.js.svg?branch=master
