@@ -180,6 +180,32 @@ describe('client/createRouteLinks', () => {
       ).toEqual(expected);
     });
 
+    test('should return link props with a resolved params and extra passed query params', () => {
+      const routes = [
+        {
+          name: 'a-route-name',
+          pattern: '/a-route-pattern-with-:lang',
+          page: '/a-route-page'
+        }
+      ];
+      const { link } = createRouteLinks(routes);
+
+      const expected = {
+        as: '/a-route-pattern-with-javascript',
+        href: '/a-route-page?lang=javascript&extra=extra-query-param'
+      };
+
+      expect(
+        link({
+          route: 'a-route-name',
+          params: {
+            lang: 'javascript',
+            extra: 'extra-query-param'
+          }
+        })
+      ).toEqual(expected);
+    });
+
     test('should return link props with a resolved optional route pattern params', () => {
       const routes = [
         {
