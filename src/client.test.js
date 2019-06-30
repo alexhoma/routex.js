@@ -228,5 +228,17 @@ describe('client/createRouteLinks', () => {
         })
       ).toEqual(expected);
     });
+
+    test('should throw an error if a route name given to link() is not defined in routes manifest', () => {
+      const routes = [];
+      const { link } = createRouteLinks(routes);
+      const routeName = 'not-existing-route';
+
+      expect(() => link({ route: routeName })).toThrow(
+        new Error(
+          `Route name "${routeName}" is not defined in your route definitions`
+        )
+      );
+    });
   });
 });

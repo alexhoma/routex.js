@@ -73,7 +73,14 @@ function createRouteLinks(routeDefinitions) {
         throw new Error(`Function link() should have a route name`);
       }
 
-      const foundRoute = findRouteByName(composedRoutes, routeName);
+      let foundRoute = findRouteByName(composedRoutes, routeName);
+
+      if (!foundRoute) {
+        throw new Error(
+          `Route name "${routeName}" is not defined in your route definitions`
+        );
+      }
+
       const { as, href } = foundRoute.getLinkProps(params);
 
       return {
