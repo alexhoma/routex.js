@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "piso-en-barcelona",
+    "title": "Piso en Barcelona",
+    "description": "Para los amantes de las terrazas en Barcelona, presentamos este ático de 148m2 con vistas ubicado en calle Ausias March. Luminoso y amplio salón comedor con chimenea que da un aire cálido al espacio. Acceso directo a la terraza de 22 m2 desde el salón. Cocina con barra independiente.",
+    "price": "500.000 €"
+  },
+  {
+    "slug": "chalet-en-mundaka",
+    "title": "Chalet en Mundaka",
+    "description": "Propiedad con 4.190 m2. de terreno en la Reserva de la Biosfera de Urdaibai, entre los municipios de Mundaka y Bermio. Diseño de amplios espacios en las dependencias, materiales de calidad, luz de emergencia, finca prácticamente llana, vallada y con zona ajardinada y de frutales. Vistas al mar y a la montaña. Privilegio de entorno natural y a 2 km. del centro de Mundaka y 3 km. del puerto de Bermeo.",
+    "price": "600.000 €"
+  },
+  {
+    "slug": "duplex-en-sevilla",
+    "title": "Duplex en Sevilla",
+    "description": "Ubicado justo a la entrada del Barrio de Triana. En la emblemática Plaza del Altozano. Se trata de un Residencial exclusivo de reciente construcción que consta de todos los Servicios necesarios cerca: Excelentes Colegios, Jardines y zona de Juegos Infantiles, Centro de Salud, Hospitales, Transporte Publico, Supermercados, Zonas comerciales (San Jacinto, Calle Betis y Puente de Isabel II).",
+    "price": "400.000 €"
+  }
+]

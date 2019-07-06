@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "apartment-in-bristol",
+    "title": "Apartment in Bristol",
+    "description": "The absolute dream of an apartment! Located on the second floor in a stunning period building on Coronation Road, directly opposite the Wapping Wharf District. This newly converted second floor Victorian apartment is full of character and ready to move into! Not only do you benefit from a riverside location in Southville, but you are only a three minute walk away from the new vibrant...",
+    "price": "£ 500.000"
+  },
+  {
+    "slug": "house-in-london",
+    "title": "House in London",
+    "description": "An exquisitely refurbished Freehold house in the heart of London. The house benefits from air conditioning and a glass roof terrace. This 2,191 sq.f. (203.6 sq.m) property is conveniently located close to Hyde Park. There is a plethora of cafes and restaurants and choice of cultural activities, including the open spaces of Hyde Park.",
+    "price": "£ 800.000"
+  },
+  {
+    "slug": "farmhouse-in-leicester",
+    "title": "Farmhouse in Leicester",
+    "description": "Situated on the outskirts of Long Clawson, Old Hall Farm offers a discreet and private location with good road links to both Nottingham and Leicester. It is a unique and rare opportunity to reside in this impressive Georgian three story detached farmhouse which has been renovated to an extremely high standard whilst retaining many original character features, including beamed ceilings, shutters, double and single glazed timber windows, and open fires.",
+    "price": "£ 700.000"
+  }
+]
