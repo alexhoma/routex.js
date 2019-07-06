@@ -140,7 +140,7 @@ Currently, there is no imperative way to change your app route using `routex.js`
 like the next-routes' `Router.pushRoute(route, params, options)`, because I didn't need it at all in my current applications.
 But I'm open to add it if someone finds it interesting. Since then, I'll try to keep this library as simple as possible.
 
-> For more information have a look into the [example app](./example) directory.
+> For more information have a look into the [example app](./examples) directory.
 
 ## Motivation
 
@@ -153,7 +153,7 @@ but to learn how dynamic routes are managed in an application made with Next.js.
 - [ ] Add an example with multi-domain application
 - [ ] Since routex.js doesn't need React at all, add an example with other Next.js integrations, like Preact, inferno, etc.
 - [ ] Avoid loading all route definitions in client side, only the ones we use per page
- 
+
 ## Contributions
 
 If you want to suggest a change, feature or any question, feel free to open an issue or a pull request.
