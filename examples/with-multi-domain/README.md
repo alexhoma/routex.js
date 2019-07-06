@@ -26,6 +26,10 @@ Then run the app and go to `realestate.es:3001` or `realestate.co.uk:3001`:
 npm start
 ```
 
+## Demo
+
+<img src="./demo.gif"  height="500px"/>
+
 ## :question: Questions
 
 If you have any doubt, **WHAT THE F\*\*\*** are you waiting for to [open an issue](https://github.com/alexhoma/routex.js/issues/new)?!? :P
