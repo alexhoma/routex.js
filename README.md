@@ -7,12 +7,13 @@
 
 ## Features
 
-- :earth_africa: Universal
+- :milky_way: Universal
 - :leaves: Tree shakeable
 - :ant: Not tiny, but pretty small
 - :link: Build your custom `<Link />` on top of it
 - :tada: Same routes contract as [next-routes] `name, pattern, page`
 - :rocket: Up to date `path-to-regexp` dependency
+- :earth_africa: Compatible with [multi domain sites]
 - :sunglasses: Cool name!
 
 Inspired by [next-routes] and [next-minimal-routes].
@@ -150,7 +151,7 @@ but to learn how dynamic routes are managed in an application made with Next.js.
 
 ## Things to do
 
-- [ ] Add an example with multi-domain application
+- [x] Add an example with multi-domain application
 - [ ] Since routex.js doesn't need React at all, add an example with other Next.js integrations, like Preact, inferno, etc.
 - [ ] Avoid loading all route definitions in client side, only the ones we use per page
 
@@ -164,3 +165,4 @@ If you want to suggest a change, feature or any question, feel free to open an i
 [bundlephobia-minzip-badge]: https://badgen.net/bundlephobia/minzip/routex.js
 [next-routes]: https://github.com/fridays/next-routes 'fridays/next-routes'
 [next-minimal-routes]: https://github.com/lydell/next-minimal-routes 'lydell/next-minimal-routes'
+[multi domain sites]: ./examples/with-multi-domain
