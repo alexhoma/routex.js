@@ -143,6 +143,10 @@ But I'm open to add it if someone finds it interesting. Since then, I'll try to 
 
 > For more information have a look into the [example app](./examples) directory.
 
+## Demo
+
+<img src="./examples/with-custom-link/demo.gif" max-height="500px" align="center" />
+
 ## Motivation
 
 I've decided to write another Next.js routing library, even when
