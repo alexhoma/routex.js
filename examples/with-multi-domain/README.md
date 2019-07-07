@@ -28,7 +28,7 @@ npm start
 
 ## Demo
 
-<img src="./demo.gif"  height="500px"/>
+<img src="./demo.gif" max-height="500px" align="center" />
 
 ## :question: Questions
 
