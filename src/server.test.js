@@ -9,7 +9,7 @@ const nextApp = {
 };
 
 describe('server/getRequestHandler', () => {
-  test('should call next requestHandler when route does not exist in route definitions', () => {
+  test('call next requestHandler when route does not exist in route definitions', () => {
     const httpHandler = {
       req: {
         url: '/a-route-url'
@@ -24,7 +24,7 @@ describe('server/getRequestHandler', () => {
     expect(nextRequestHandler).toHaveBeenCalledWith(req, res, parsedUrl);
   });
 
-  test('should call next render when given route exists', () => {
+  test('call next render when given route exists', () => {
     const httpHandler = {
       req: {
         url: '/a-route-pattern',
@@ -54,7 +54,7 @@ describe('server/getRequestHandler', () => {
     );
   });
 
-  test('should call next render when given route exists with route path params', () => {
+  test('call next render when given route exists with route path params', () => {
     const httpHandler = {
       req: {
         url: '/a-route-pattern-firstParam-secondParam',
@@ -86,7 +86,7 @@ describe('server/getRequestHandler', () => {
     );
   });
 
-  test('should call next render when given route exists with additional query params', () => {
+  test('call next render when given route exists with additional query params', () => {
     const httpHandler = {
       req: {
         url: '/a-route-pattern?q=queryParam',

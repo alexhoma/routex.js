@@ -1,7 +1,7 @@
 import createRouteLinks from './client';
 
 describe('client/createRouteLinks', () => {
-  test('should return a link() function', () => {
+  test('return a link() function', () => {
     const routes = [{ name: 'a-route-name' }];
 
     const { link } = createRouteLinks(routes);
@@ -9,7 +9,7 @@ describe('client/createRouteLinks', () => {
     expect(link).toBeDefined();
   });
 
-  test('should throw an error if a route name is not defined', () => {
+  test('throw an error if a route name is not defined', () => {
     const routes = [{ name: 'a-route-name' }, { pattern: '/a-route-pattern' }];
 
     expect(() => createRouteLinks(routes)).toThrow(
@@ -17,7 +17,7 @@ describe('client/createRouteLinks', () => {
     );
   });
 
-  test('should throw an error if a route name is already defined', () => {
+  test('throw an error if a route name is already defined', () => {
     const duplicatedRouteName = 'a-route-name';
     const routes = [
       { name: duplicatedRouteName },
@@ -30,7 +30,7 @@ describe('client/createRouteLinks', () => {
   });
 
   describe('link', () => {
-    test('should throw an error if no route given', () => {
+    test('throw an error if no route given', () => {
       const { link } = createRouteLinks([]);
 
       expect(() => link({ route: undefined })).toThrow(
@@ -38,7 +38,7 @@ describe('client/createRouteLinks', () => {
       );
     });
 
-    test('should return link props given a route definition with a name', () => {
+    test('return link props given a route definition with a name', () => {
       const routes = [{ name: 'a-route-name' }];
       const { link } = createRouteLinks(routes);
 
@@ -54,7 +54,7 @@ describe('client/createRouteLinks', () => {
       ).toEqual(expected);
     });
 
-    test('should return link props given a route definition with a name and pattern', () => {
+    test('return link props given a route definition with a name and pattern', () => {
       const routes = [{ name: 'a-route-name', pattern: '/a-route-pattern' }];
       const { link } = createRouteLinks(routes);
 
@@ -70,7 +70,7 @@ describe('client/createRouteLinks', () => {
       ).toEqual(expected);
     });
 
-    test('should return link props given a route definition with a name, pattern and page', () => {
+    test('return link props given a route definition with a name, pattern and page', () => {
       const routes = [
         {
           name: 'a-route-name',
@@ -130,7 +130,7 @@ describe('client/createRouteLinks', () => {
       ).toEqual(expected);
     });
 
-    test('should return link props with a matched route definition', () => {
+    test('return link props with a matched route definition', () => {
       const routes = [
         {
           name: 'a-route-name',
@@ -157,7 +157,7 @@ describe('client/createRouteLinks', () => {
       ).toEqual(expected);
     });
 
-    test('should return link props with a resolved route pattern params', () => {
+    test('return link props with a resolved route pattern params', () => {
       const routes = [
         {
           name: 'a-route-name',
@@ -180,7 +180,7 @@ describe('client/createRouteLinks', () => {
       ).toEqual(expected);
     });
 
-    test('should return link props with a resolved params and extra passed query params', () => {
+    test('return link props with a resolved params and extra passed query params', () => {
       const routes = [
         {
           name: 'a-route-name',
@@ -206,7 +206,7 @@ describe('client/createRouteLinks', () => {
       ).toEqual(expected);
     });
 
-    test('should return link props with a resolved optional route pattern params', () => {
+    test('return link props with a resolved optional route pattern params', () => {
       const routes = [
         {
           name: 'a-route-name',
@@ -229,7 +229,7 @@ describe('client/createRouteLinks', () => {
       ).toEqual(expected);
     });
 
-    test('should throw an error if a route name given to link() is not defined in routes manifest', () => {
+    test('throw an error if a route name given to link() is not defined in routes manifest', () => {
       const routes = [];
       const { link } = createRouteLinks(routes);
       const routeName = 'not-existing-route';
