@@ -64,7 +64,7 @@ const express = require('express');
 const next = require('next');
 const nextApp = next({ dev: process.env.NODE_ENV !== 'production' });
 const routes = require('./routes');
-const { getRequestHandler } = require('routex');
+const { getRequestHandler } = require('routex.js');
 
 const routexHandlerMiddleware = getRequestHandler(nextApp, routes);
 
