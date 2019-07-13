@@ -1,11 +1,10 @@
 import { parse } from 'url';
 import pathToRegexp from 'path-to-regexp';
+import { replaceIndexRoute, replaceStartingSlash } from './utils';
 
 function createRoute({ name, pattern = name, page = name }) {
-  const routePattern = `/${pattern}`.replace(/^(\/\/)/, '/');
-  const routePage = `/${page}`
-    .replace(/^(\/index)$/, '/')
-    .replace(/^(\/\/)/, '/');
+  const routePattern = replaceIndexRoute(replaceStartingSlash(pattern));
+  const routePage = replaceStartingSlash(page);
 
   const keys = [];
   const regex = pathToRegexp(routePattern, keys);
@@ -19,7 +18,7 @@ function createRoute({ name, pattern = name, page = name }) {
 
     const matchedRouteKeys = matched.slice(1);
 
-    return matchedRouteKeys.reduce(function transformParamsToObject(
+    const macha = matchedRouteKeys.reduce(function transformParamsToObject(
       parameters,
       param,
       key
@@ -34,6 +33,8 @@ function createRoute({ name, pattern = name, page = name }) {
       };
     },
     {});
+
+    return macha;
   }
 
   return {

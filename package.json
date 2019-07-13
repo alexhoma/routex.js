@@ -25,8 +25,9 @@
     "build": "microbundle",
     "test": "jest",
     "mutants": "stryker run",
+    "coverage": "jest t --coverage",
     "size": "bundlesize",
-    "prepare": "npm t -- --coverage && npm run build && npm run size",
+    "prepare": "npm run coverage && npm run build && npm run size",
     "release": "npm run prepare && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
   },
   "devDependencies": {

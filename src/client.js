@@ -1,15 +1,8 @@
 import { compile } from 'path-to-regexp';
+import { replaceIndexRoute, replaceStartingSlash } from './utils';
 
 function findRouteByName(routesList, routeName) {
   return routesList.find(routeToFind => routeToFind.name === routeName);
-}
-
-function replaceStartingSlash(string) {
-  return `/${string}`.replace(/^(\/\/)/, '/');
-}
-
-function replaceIndexRoute(string) {
-  return string.replace(/^(\/index)$/, '/');
 }
 
 function paramsToQueryString(params) {
