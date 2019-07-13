@@ -31,14 +31,15 @@
     "release": "npm run prepare && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "@stryker-mutator/core": "^2.0.0",
-    "@stryker-mutator/html-reporter": "^2.0.0",
-    "@stryker-mutator/javascript-mutator": "^2.0.0",
-    "@stryker-mutator/jest-runner": "^2.0.0",
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "@stryker-mutator/core": "^2.0.2",
+    "@stryker-mutator/html-reporter": "^2.0.2",
+    "@stryker-mutator/javascript-mutator": "^2.0.2",
+    "@stryker-mutator/jest-runner": "^2.0.2",
     "babel-jest": "^24.8.0",
     "bundlesize": "^0.17.2",
+    "husky": "^3.0.0",
     "jest": "^24.8.0",
     "microbundle": "^0.11.0"
   },
