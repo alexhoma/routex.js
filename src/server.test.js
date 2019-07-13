@@ -40,10 +40,15 @@ describe('server/getRequestHandler', () => {
         name: 'a-route-name',
         pattern: 'a-route-pattern',
         page: '/a-route-page'
+      },
+      {
+        name: 'another-route-name',
+        pattern: 'another-route-pattern',
+        page: '/another-route-page'
       }
     ];
 
-    const matchedRoute = routes[0];
+    const [matchedRoute] = routes;
     getRequestHandler(nextApp, routes)(req, res);
 
     expect(nextRender).toHaveBeenCalledWith(
@@ -86,6 +91,40 @@ describe('server/getRequestHandler', () => {
     );
   });
 
+  test('call next render with the first defined route when two routes match the same pattern', () => {
+    const httpHandler = {
+      req: {
+        url: '/a-route-withoutParam',
+        query: {}
+      },
+      res: {}
+    };
+    const { req, res } = httpHandler;
+
+    const routes = [
+      {
+        name: 'first-route-name',
+        pattern: 'a-route-withoutParam',
+        page: '/first-route-page'
+      },
+      {
+        name: 'second-route-name',
+        pattern: 'a-route-:withParam',
+        page: '/second-route-page'
+      }
+    ];
+
+    const [matchedRoute] = routes;
+    getRequestHandler(nextApp, routes)(req, res);
+
+    expect(nextRender).toHaveBeenCalledWith(
+      req,
+      res,
+      matchedRoute.page,
+      req.query
+    );
+  });
+
   test('call next render when given route exists with additional query params', () => {
     const httpHandler = {
       req: {
@@ -106,7 +145,7 @@ describe('server/getRequestHandler', () => {
       }
     ];
 
-    const matchedRoute = routes[0];
+    const [matchedRoute] = routes;
     getRequestHandler(nextApp, routes)(req, res);
 
     expect(nextRender).toHaveBeenCalledWith(

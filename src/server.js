@@ -12,6 +12,11 @@ function createRoute({ name, pattern = name, page = name }) {
 
   function match(pathname) {
     const matched = regex.exec(pathname);
+
+    if (!matched) {
+      return null;
+    }
+
     const matchedRouteKeys = matched.slice(1);
 
     return matchedRouteKeys.reduce(function transformParamsToObject(
@@ -39,14 +44,16 @@ function createRoute({ name, pattern = name, page = name }) {
 
 function matchRoute(routes, pathname) {
   return routes.reduce(function extractRouteDescription(result, route) {
-    const params = route.match(pathname);
+    if (result.page) {
+      return result;
+    }
 
+    const params = route.match(pathname);
     if (!params) {
       return result;
     }
 
     return {
-      ...result,
       params,
       page: route.page
     };
