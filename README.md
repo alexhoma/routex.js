@@ -1,7 +1,23 @@
 <h1 align="center">Routex.js</h1>
 <p align="center">Yes, another library to handle <strong>dynamic routes in Next.js</strong></p>
 
-<p align="center"><a href="https://www.npmjs.com/package/routex.js"><img src="https://badgen.net/npm/v/routex.js"></a> <a href="https://travis-ci.com/alexhoma/routex.js"><img src="https://travis-ci.com/alexhoma/routex.js.svg?branch=master"></a> <a href="https://bundlephobia.com/result?p=routex.js"><img src="https://badgen.net/bundlephobia/min/routex.js"></a> <a href="https://bundlephobia.com/result?p=routex.js"><img src="https://badgen.net/bundlephobia/minzip/routex.js"></a></p>
+<p align="center">
+  <a href="https://www.npmjs.com/package/routex.js">
+    <img src="https://badgen.net/npm/v/routex.js">
+  </a> 
+  <a href="https://travis-ci.com/alexhoma/routex.js">
+    <img src="https://travis-ci.com/alexhoma/routex.js.svg?branch=master">
+  </a> 
+  <a href="https://codecov.io/gh/alexhoma/routex.js">
+    <img src="https://badgen.net/codecov/c/github/alexhoma/routex.js">
+  </a> 
+  <a href="https://bundlephobia.com/result?p=routex.js">
+    <img src="https://badgen.net/bundlephobia/min/routex.js">
+  </a> 
+  <a href="https://bundlephobia.com/result?p=routex.js">
+    <img src="https://badgen.net/bundlephobia/minzip/routex.js">
+  </a>
+</p>
 
 <br />
 
