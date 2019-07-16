@@ -18,7 +18,7 @@ function createRoute({ name, pattern = name, page = name }) {
 
     const matchedRouteKeys = matched.slice(1);
 
-    const macha = matchedRouteKeys.reduce(function transformParamsToObject(
+    return matchedRouteKeys.reduce(function transformParamsToObject(
       parameters,
       param,
       key
@@ -33,8 +33,6 @@ function createRoute({ name, pattern = name, page = name }) {
       };
     },
     {});
-
-    return macha;
   }
 
   return {
