@@ -192,7 +192,8 @@ describe('client/createRouteLinks', () => {
 
       const expected = {
         as: '/a-route-pattern-with-javascript',
-        href: '/a-route-page?lang=javascript&extra=extra-query-param'
+        href:
+          '/a-route-page?lang=javascript&extra=extra-query-param&extraArray=first-param%2Fsecond-param'
       };
 
       expect(
@@ -200,7 +201,8 @@ describe('client/createRouteLinks', () => {
           route: 'a-route-name',
           params: {
             lang: 'javascript',
-            extra: 'extra-query-param'
+            extra: 'extra-query-param',
+            extraArray: ['first-param', 'second-param']
           }
         })
       ).toEqual(expected);
