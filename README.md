@@ -53,7 +53,7 @@ yarn add routex.js
 ### Route definitions
 
 Okay, so now we have installed routex. First of all we'll need to declare
-our application's route definitions. So let's create a `routes.js` file:
+our application routes. So let's create a `routes.js` file:
 
 ```javascript
 module.exports = [

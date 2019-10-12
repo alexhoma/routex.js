@@ -1,6 +1,9 @@
 # Contributing
 
-:tada: Thank you for being interested in contributing to this `routex.js`. Don't hesitate to [open an issue] if something is wrong or you have any questions about how to contribute. ([Issue template]) 
+:tada: Thank you for being interested in contributing to this `routex.js`. Don't hesitate to [open an issue] if something is wrong or you have any questions about how to contribute.
+
+* [Bug issue template]
+* [Feature issue template]
 
 ### 1. Setup
 
@@ -14,7 +17,7 @@
   * `chore`: for tooling changes
   * `docs`: for documentation improves
   
-Add any "context" `feat(server)` to the commit message if you want. I'll give you some examples:
+Add any "context" `(server/client/...)` to the commit message if you want. I'll give you some examples:
 
 > * fix(client): checks undefined route arguments
 > * feat(server): adds new route param
@@ -46,5 +49,6 @@ npm run mutants   # executes striker for mutant testing
 Once you're finished just push your changes and open a pull request. Get the [pull request template].
 
 [open an issue]: https://github.com/alexhoma/routex.js/issues/new
-[issue template]: ./ISSUE_TEMPLATE.md
-[pull request template]: ./PULL_REQUEST_TEMPLATE.md
+[Bug issue template]: ./bug_report.md
+[Feature issue template]: ./feature_request.md
+[pull request template]: ./pull_request_template.md
