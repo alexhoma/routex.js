@@ -34,7 +34,7 @@ nextApp.prepare().then(() => {
   const app = express();
 
   app
-    .use(express.static('static'))
+    .use(express.static('public'))
     // Load the requestHandler middleware
     .use(routexHandlerMiddleware)
     .listen(3001);

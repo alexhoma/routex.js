@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 
 function composeFakeApiUrl(countryCode) {
-  return `http://localhost:3001/static/fake-data-${countryCode}.json`;
+  return `http://localhost:3001/fake-data-${countryCode}.json`;
 }
 
 export async function findProperty(countryCode, propertyToFind) {
@@ -10,7 +10,7 @@ export async function findProperty(countryCode, propertyToFind) {
   const data = await response.json();
 
   const [foundProperty] = data.filter(
-    property => property.slug === propertyToFind
+    property => property.slug === propertyToFind,
   );
 
   return foundProperty;
