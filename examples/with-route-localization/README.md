@@ -1,6 +1,6 @@
-# Multi domain example
+# Routes localization example
 
-Using Routex.js in a Next.js multi domain website.
+Using Routex.js in a Next.js project that needs translated routes depending on which country code top level domain is loaded (ccTLD).
 
 This is an example of a **real estate** company that have two websites
 `realestate.es` and `realestate.co.uk` into the same project, the Next.js codebase is the same for the two websites because the only that changes is the data comming from the API.

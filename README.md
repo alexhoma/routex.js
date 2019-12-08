@@ -29,7 +29,7 @@
 - :link: Build your custom `<Link />` on top of it
 - :tada: Same routes contract as [next-routes] `name, pattern, page`
 - :rocket: Up to date `path-to-regexp` dependency
-- :earth_africa: Compatible with [multi domain sites]
+- :earth_africa: Compatible with [routes localization]
 - :sunglasses: Cool name!
 
 Inspired by [next-routes] and [next-minimal-routes].
@@ -59,15 +59,23 @@ our application routes. So let's create a `routes.js` file:
 module.exports = [
   {
     name: 'index',
-    pattern: '/'
+    pattern: '/',
   },
   {
     name: 'post',
     pattern: '/post/:slug',
-    page: 'post'
-  }
+    page: 'post',
+  },
+  {
+    name: 'tags',
+    pattern: '/tags{-id}?', // optional id param
+    page: 'tags',
+  },
 ];
 ```
+
+> If you need more info on how to create the route patterns
+> check the `path-to-regexp` documentation: [pillarjs/path-to-regexp].
 
 ### Server `getRequestHandler()`
 
@@ -131,7 +139,7 @@ export default () => (
     <CustomLink
       route="post"
       params={{
-        slug: 'next-js-post'
+        slug: 'next-js-post',
       }}
     >
       Next.js post link
@@ -165,9 +173,7 @@ But I'm open to add it if someone finds it interesting. Since then, I'll try to 
 
 ## Motivation
 
-I've decided to write another Next.js routing library, even when
-there are similar libraries already, not only to reinvent the weel hehe,
-but to learn how dynamic routes are managed in an application made with Next.js. Also, because I found that some similar libraries does not fit at all with what I was searching for when using dynamic routes.
+Check out this blog post to know some of the reasons why I've decided to create another routing library: [alexhoma.com/projects/routexjs-yet-another-router-for-nextjs]
 
 ## Things to do
 
@@ -185,4 +191,6 @@ If you want to suggest a change, feature or any question, feel free to open an i
 [bundlephobia-minzip-badge]: https://badgen.net/bundlephobia/minzip/routex.js
 [next-routes]: https://github.com/fridays/next-routes 'fridays/next-routes'
 [next-minimal-routes]: https://github.com/lydell/next-minimal-routes 'lydell/next-minimal-routes'
-[multi domain sites]: ./examples/with-multi-domain
+[routes localization]: ./examples/with-route-localization
+[pillarjs/path-to-regexp]: https://github.com/pillarjs/path-to-regexp
+[alexhoma.com/projects/routexjs-yet-another-router-for-nextjs]: https://alexhoma.com/projects/routexjs-yet-another-router-for-nextjs/
