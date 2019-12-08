@@ -68,7 +68,7 @@ module.exports = [
   },
   {
     name: 'tags',
-    pattern: '/tags{-id}?', // optional id param
+    pattern: '/tags{-:id}?', // optional id param
     page: 'tags',
   },
 ];

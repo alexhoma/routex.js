@@ -1,7 +1,8 @@
 import fetch from 'isomorphic-fetch';
 
 function composeFakeApiUrl(countryCode) {
-  return `http://localhost:3001/fake-data-${countryCode}.json`;
+  const ukPrefix = countryCode === 'uk' ? 'co.' : '';
+  return `http://realestate.${ukPrefix}${countryCode}:3001/fake-data-${countryCode}.json`;
 }
 
 export async function findProperty(countryCode, propertyToFind) {
