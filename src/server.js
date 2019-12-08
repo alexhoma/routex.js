@@ -1,5 +1,5 @@
 import { parse } from 'url';
-import pathToRegexp from 'path-to-regexp';
+import { pathToRegexp } from 'path-to-regexp';
 import { replaceIndexRoute, replaceStartingSlash } from './utils';
 
 function createRoute({ name, pattern = name, page = name }) {
@@ -21,7 +21,7 @@ function createRoute({ name, pattern = name, page = name }) {
     return matchedRouteKeys.reduce(function transformParamsToObject(
       parameters,
       param,
-      key
+      key,
     ) {
       if (param === undefined) {
         return parameters;
@@ -29,7 +29,7 @@ function createRoute({ name, pattern = name, page = name }) {
 
       return {
         ...parameters,
-        [keys[key].name]: decodeURIComponent(param)
+        [keys[key].name]: decodeURIComponent(param),
       };
     },
     {});
@@ -37,7 +37,7 @@ function createRoute({ name, pattern = name, page = name }) {
 
   return {
     match,
-    page: routePage
+    page: routePage,
   };
 }
 
@@ -54,7 +54,7 @@ function matchRoute(routes, pathname) {
 
     return {
       params,
-      page: route.page
+      page: route.page,
     };
   }, {});
 }
@@ -74,7 +74,7 @@ function getRequestHandler(nextApp, routesDefinitions = []) {
     if (page) {
       const pageParams = {
         ...params,
-        ...parsedUrl.query
+        ...parsedUrl.query,
       };
 
       return nextApp.render(req, res, page, pageParams);

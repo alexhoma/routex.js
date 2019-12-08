@@ -31,8 +31,8 @@
     "release": "npm run prepare && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.4",
-    "@babel/preset-env": "^7.7.4",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
     "@stryker-mutator/core": "^2.4.0",
     "@stryker-mutator/html-reporter": "^2.4.0",
     "@stryker-mutator/javascript-mutator": "^2.4.0",
@@ -45,7 +45,7 @@
     "microbundle": "^0.11.0"
   },
   "dependencies": {
-    "path-to-regexp": "^3.2.0"
+    "path-to-regexp": "^6.1.0"
   },
   "bundlesize": [
     {

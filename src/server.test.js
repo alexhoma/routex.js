@@ -5,7 +5,7 @@ const nextRender = jest.fn();
 const nextRequestHandler = jest.fn();
 const nextApp = {
   render: nextRender,
-  getRequestHandler: () => nextRequestHandler
+  getRequestHandler: () => nextRequestHandler,
 };
 
 beforeEach(() => jest.resetAllMocks());
@@ -14,9 +14,9 @@ describe('server/getRequestHandler', () => {
   test('call next requestHandler when route does not exist in route definitions', () => {
     const httpHandler = {
       req: {
-        url: '/a-route-url'
+        url: '/a-route-url',
       },
-      res: {}
+      res: {},
     };
     const { req, res } = httpHandler;
     const parsedUrl = parse(req.url, true);
@@ -30,9 +30,9 @@ describe('server/getRequestHandler', () => {
     const httpHandler = {
       req: {
         url: '/a-route-pattern',
-        query: {}
+        query: {},
       },
-      res: {}
+      res: {},
     };
     const { req, res } = httpHandler;
 
@@ -40,13 +40,13 @@ describe('server/getRequestHandler', () => {
       {
         name: 'a-route-name',
         pattern: 'a-route-pattern',
-        page: '/a-route-page'
+        page: '/a-route-page',
       },
       {
         name: 'another-route-name',
         pattern: 'another-route-pattern',
-        page: '/another-route-page'
-      }
+        page: '/another-route-page',
+      },
     ];
 
     const [matchedRoute] = routes;
@@ -56,7 +56,7 @@ describe('server/getRequestHandler', () => {
       req,
       res,
       matchedRoute.page,
-      req.query
+      req.query,
     );
   });
 
@@ -64,16 +64,16 @@ describe('server/getRequestHandler', () => {
     const httpHandler = {
       req: {
         url: '/',
-        query: {}
+        query: {},
       },
-      res: {}
+      res: {},
     };
     const { req, res } = httpHandler;
 
     const routes = [
       {
-        name: 'index'
-      }
+        name: 'index',
+      },
     ];
 
     const [matchedRoute] = routes;
@@ -87,16 +87,16 @@ describe('server/getRequestHandler', () => {
     const httpHandler = {
       req: {
         url: '/a-route-name',
-        query: {}
+        query: {},
       },
-      res: {}
+      res: {},
     };
     const { req, res } = httpHandler;
 
     const routes = [
       {
-        name: 'a-route-name'
-      }
+        name: 'a-route-name',
+      },
     ];
 
     const [matchedRoute] = routes;
@@ -110,9 +110,9 @@ describe('server/getRequestHandler', () => {
     const httpHandler = {
       req: {
         url: '/a-route-pattern-with-starting-slash',
-        query: {}
+        query: {},
       },
-      res: {}
+      res: {},
     };
 
     const { req, res } = httpHandler;
@@ -121,8 +121,8 @@ describe('server/getRequestHandler', () => {
       {
         name: 'a-route-name',
         pattern: '/a-route-pattern-with-starting-slash',
-        page: '/a-route-page'
-      }
+        page: '/a-route-page',
+      },
     ];
 
     const [matchedRoute] = routes;
@@ -132,7 +132,7 @@ describe('server/getRequestHandler', () => {
       req,
       res,
       matchedRoute.page,
-      req.query
+      req.query,
     );
   });
 
@@ -142,10 +142,10 @@ describe('server/getRequestHandler', () => {
         url: '/a-route-pattern-firstParam-secondParam',
         query: {
           param1: 'firstParam',
-          param2: 'secondParam'
-        }
+          param2: 'secondParam',
+        },
       },
-      res: {}
+      res: {},
     };
     const { req, res } = httpHandler;
 
@@ -153,8 +153,8 @@ describe('server/getRequestHandler', () => {
       {
         name: 'a-route-name',
         pattern: 'a-route-pattern-:param1-:param2',
-        page: '/a-route-page'
-      }
+        page: '/a-route-page',
+      },
     ];
 
     const matchedRoute = routes[0];
@@ -164,7 +164,7 @@ describe('server/getRequestHandler', () => {
       req,
       res,
       matchedRoute.page,
-      req.query
+      req.query,
     );
   });
 
@@ -172,18 +172,18 @@ describe('server/getRequestHandler', () => {
     const httpHandler = {
       req: {
         url: '/a-route-pattern',
-        query: {}
+        query: {},
       },
-      res: {}
+      res: {},
     };
     const { req, res } = httpHandler;
 
     const routes = [
       {
         name: 'a-route-name',
-        pattern: 'a-route-pattern-:withOptionalParam?',
-        page: '/a-route-page'
-      }
+        pattern: 'a-route-pattern{-:withOptionalParam}?',
+        page: '/a-route-page',
+      },
     ];
 
     const matchedRoute = routes[0];
@@ -193,7 +193,7 @@ describe('server/getRequestHandler', () => {
       req,
       res,
       matchedRoute.page,
-      req.query
+      req.query,
     );
   });
 
@@ -201,9 +201,9 @@ describe('server/getRequestHandler', () => {
     const httpHandler = {
       req: {
         url: '/a-route-withoutParam',
-        query: {}
+        query: {},
       },
-      res: {}
+      res: {},
     };
     const { req, res } = httpHandler;
 
@@ -211,13 +211,13 @@ describe('server/getRequestHandler', () => {
       {
         name: 'first-route-name',
         pattern: 'a-route-withoutParam',
-        page: '/first-route-page'
+        page: '/first-route-page',
       },
       {
         name: 'second-route-name',
         pattern: 'a-route-:withParam',
-        page: '/second-route-page'
-      }
+        page: '/second-route-page',
+      },
     ];
 
     const [matchedRoute] = routes;
@@ -227,7 +227,7 @@ describe('server/getRequestHandler', () => {
       req,
       res,
       matchedRoute.page,
-      req.query
+      req.query,
     );
   });
 
@@ -236,10 +236,10 @@ describe('server/getRequestHandler', () => {
       req: {
         url: '/a-route-pattern?q=queryParam',
         query: {
-          q: 'queryParam'
-        }
+          q: 'queryParam',
+        },
       },
-      res: {}
+      res: {},
     };
     const { req, res } = httpHandler;
 
@@ -247,8 +247,8 @@ describe('server/getRequestHandler', () => {
       {
         name: 'a-route-name',
         pattern: 'a-route-pattern',
-        page: '/a-route-page'
-      }
+        page: '/a-route-page',
+      },
     ];
 
     const [matchedRoute] = routes;
@@ -258,7 +258,7 @@ describe('server/getRequestHandler', () => {
       req,
       res,
       matchedRoute.page,
-      req.query
+      req.query,
     );
   });
 });

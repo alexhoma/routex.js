@@ -13,7 +13,7 @@ describe('client/createRouteLinks', () => {
     const routes = [{ name: 'a-route-name' }, { pattern: '/a-route-pattern' }];
 
     expect(() => createRouteLinks(routes)).toThrow(
-      new Error(`A route name must be defined`)
+      new Error(`A route name must be defined`),
     );
   });
 
@@ -21,11 +21,11 @@ describe('client/createRouteLinks', () => {
     const duplicatedRouteName = 'a-route-name';
     const routes = [
       { name: duplicatedRouteName },
-      { name: duplicatedRouteName }
+      { name: duplicatedRouteName },
     ];
 
     expect(() => createRouteLinks(routes)).toThrow(
-      new Error(`This route name is already defined: ${duplicatedRouteName}`)
+      new Error(`This route name is already defined: ${duplicatedRouteName}`),
     );
   });
 
@@ -34,7 +34,7 @@ describe('client/createRouteLinks', () => {
       const { link } = createRouteLinks([]);
 
       expect(() => link({ route: undefined })).toThrow(
-        new Error(`Function link() should have a route name`)
+        new Error(`Function link() should have a route name`),
       );
     });
 
@@ -44,13 +44,13 @@ describe('client/createRouteLinks', () => {
 
       const expected = {
         as: '/a-route-name',
-        href: '/a-route-name'
+        href: '/a-route-name',
       };
 
       expect(
         link({
-          route: 'a-route-name'
-        })
+          route: 'a-route-name',
+        }),
       ).toEqual(expected);
     });
 
@@ -60,13 +60,13 @@ describe('client/createRouteLinks', () => {
 
       const expected = {
         as: '/a-route-pattern',
-        href: '/a-route-name'
+        href: '/a-route-name',
       };
 
       expect(
         link({
-          route: 'a-route-name'
-        })
+          route: 'a-route-name',
+        }),
       ).toEqual(expected);
     });
 
@@ -75,20 +75,20 @@ describe('client/createRouteLinks', () => {
         {
           name: 'a-route-name',
           pattern: '/a-route-pattern',
-          page: '/a-route-page'
-        }
+          page: '/a-route-page',
+        },
       ];
       const { link } = createRouteLinks(routes);
 
       const expected = {
         as: '/a-route-pattern',
-        href: '/a-route-page'
+        href: '/a-route-page',
       };
 
       expect(
         link({
-          route: 'a-route-name'
-        })
+          route: 'a-route-name',
+        }),
       ).toEqual(expected);
     });
 
@@ -97,20 +97,20 @@ describe('client/createRouteLinks', () => {
         {
           name: 'a-route-name',
           pattern: '/a-route-pattern',
-          page: '/a-route-page'
-        }
+          page: '/a-route-page',
+        },
       ];
       const { link } = createRouteLinks(routes);
 
       const expected = {
         as: '/a-route-pattern',
-        href: '/a-route-page'
+        href: '/a-route-page',
       };
 
       expect(
         link({
-          route: 'a-route-name'
-        })
+          route: 'a-route-name',
+        }),
       ).toEqual(expected);
     });
 
@@ -120,13 +120,13 @@ describe('client/createRouteLinks', () => {
 
       const expected = {
         as: '/',
-        href: '/index'
+        href: '/index',
       };
 
       expect(
         link({
-          route: 'index'
-        })
+          route: 'index',
+        }),
       ).toEqual(expected);
     });
 
@@ -135,25 +135,25 @@ describe('client/createRouteLinks', () => {
         {
           name: 'a-route-name',
           pattern: '/a-route-pattern',
-          page: '/a-route-page'
+          page: '/a-route-page',
         },
         {
           name: 'another-route-name',
           pattern: '/another-route-pattern',
-          page: '/another-route-page'
-        }
+          page: '/another-route-page',
+        },
       ];
       const { link } = createRouteLinks(routes);
 
       const expected = {
         as: '/another-route-pattern',
-        href: '/another-route-page'
+        href: '/another-route-page',
       };
 
       expect(
         link({
-          route: 'another-route-name'
-        })
+          route: 'another-route-name',
+        }),
       ).toEqual(expected);
     });
 
@@ -162,21 +162,21 @@ describe('client/createRouteLinks', () => {
         {
           name: 'a-route-name',
           pattern: '/a-route-pattern-with-:lang',
-          page: '/a-route-page'
-        }
+          page: '/a-route-page',
+        },
       ];
       const { link } = createRouteLinks(routes);
 
       const expected = {
         as: '/a-route-pattern-with-javascript',
-        href: '/a-route-page?lang=javascript'
+        href: '/a-route-page?lang=javascript',
       };
 
       expect(
         link({
           route: 'a-route-name',
-          params: { lang: 'javascript' }
-        })
+          params: { lang: 'javascript' },
+        }),
       ).toEqual(expected);
     });
 
@@ -185,15 +185,15 @@ describe('client/createRouteLinks', () => {
         {
           name: 'a-route-name',
           pattern: '/a-route-pattern-with-:lang',
-          page: '/a-route-page'
-        }
+          page: '/a-route-page',
+        },
       ];
       const { link } = createRouteLinks(routes);
 
       const expected = {
         as: '/a-route-pattern-with-javascript',
         href:
-          '/a-route-page?lang=javascript&extra=extra-query-param&extraArray=first-param%2Fsecond-param'
+          '/a-route-page?lang=javascript&extra=extra-query-param&extraArray=first-param%2Fsecond-param',
       };
 
       expect(
@@ -202,9 +202,9 @@ describe('client/createRouteLinks', () => {
           params: {
             lang: 'javascript',
             extra: 'extra-query-param',
-            extraArray: ['first-param', 'second-param']
-          }
-        })
+            extraArray: ['first-param', 'second-param'],
+          },
+        }),
       ).toEqual(expected);
     });
 
@@ -212,22 +212,22 @@ describe('client/createRouteLinks', () => {
       const routes = [
         {
           name: 'a-route-name',
-          pattern: '/a-route-pattern-with-:optionalLang?',
-          page: '/a-route-page'
-        }
+          pattern: '/a-route-pattern-with{-:optionalLang}?',
+          page: '/a-route-page',
+        },
       ];
       const { link } = createRouteLinks(routes);
 
       const expected = {
         as: '/a-route-pattern-with',
-        href: '/a-route-page'
+        href: '/a-route-page',
       };
 
       expect(
         link({
           route: 'a-route-name',
-          params: { lang: undefined }
-        })
+          params: { lang: undefined },
+        }),
       ).toEqual(expected);
     });
 
@@ -238,8 +238,8 @@ describe('client/createRouteLinks', () => {
 
       expect(() => link({ route: routeName })).toThrow(
         new Error(
-          `Route name "${routeName}" is not defined in your route definitions`
-        )
+          `Route name "${routeName}" is not defined in your route definitions`,
+        ),
       );
     });
   });
