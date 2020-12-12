@@ -1,11 +1,12 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { createRouteLinks } from 'routex.js';
+import isEqual from 'react-fast-compare';
 import routes from './routes';
 
 const { link } = createRouteLinks(routes);
 
-export default function CustomLink({ children, title, route, params }) {
+const CustomLink = ({ children, title, route, params }) => {
   const { as, href } = link({ route, params: { ...params } });
 
   return (
@@ -13,4 +14,7 @@ export default function CustomLink({ children, title, route, params }) {
       <a title={title}>{children}</a>
     </NextLink>
   );
-}
+};
+
+
+export default React.memo(CustomLink, isEqual);

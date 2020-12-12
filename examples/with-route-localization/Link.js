@@ -3,6 +3,7 @@ require('babel-polyfill');
 import React from 'react';
 import NextLink from 'next/link';
 import { createRouteLinks } from 'routex.js';
+import isEqual from 'react-fast-compare';
 
 const RoutesContext = React.createContext([]);
 
@@ -12,7 +13,7 @@ export function RoutesProvider({ children, routes }) {
   );
 }
 
-export default function CustomLink({ children, title, route, params }) {
+const CustomLink = ({ children, title, route, params }) => {
   return (
     <RoutesContext.Consumer>
       {routes => {
@@ -27,4 +28,6 @@ export default function CustomLink({ children, title, route, params }) {
       }}
     </RoutesContext.Consumer>
   );
-}
+};
+
+export default React.memo(CustomLink, isEqual);

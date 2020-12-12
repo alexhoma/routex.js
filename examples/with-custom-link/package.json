@@ -14,6 +14,7 @@
     "next": "^9.3.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-fast-compare": "^3.2.0",
     "routex.js": "^1.0.0"
   },
   "devDependencies": {
