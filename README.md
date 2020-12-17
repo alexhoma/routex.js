@@ -183,7 +183,7 @@ Check out this blog post to know some of the reasons why I've decided to create 
 
 ## Contributions
 
-If you want to suggest a change, feature or any question, feel free to open an issue or a pull request.
+If you want to suggest a change, feature or any question, feel free to open an issue or a pull request. But check the [contributing file] before you go.
 
 [npm-version]: https://badgen.net/npm/v/routex.js
 [travis-build]: https://travis-ci.com/alexhoma/routex.js.svg?branch=master
@@ -194,3 +194,4 @@ If you want to suggest a change, feature or any question, feel free to open an i
 [routes localization]: ./examples/with-route-localization
 [pillarjs/path-to-regexp]: https://github.com/pillarjs/path-to-regexp
 [alexhoma.com/projects/routexjs-yet-another-router-for-nextjs]: https://alexhoma.com/projects/routexjs-yet-another-router-for-nextjs/
+[contributing file]: https://github.com/alexhoma/routex.js/blob/master/.github/contributing.md
