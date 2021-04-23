@@ -29,7 +29,7 @@
 - :link: Build your custom `<Link />` on top of it
 - :tada: Same routes contract as [next-routes] `name, pattern, page`
 - :rocket: Up to date `path-to-regexp` dependency
-- :earth_africa: Compatible with [routes localization]
+- :earth_africa: Compatible with multi-domain routing (a.k.a [routes localization])
 - :sunglasses: Cool name!
 
 Inspired by [next-routes] and [next-minimal-routes].
