@@ -175,7 +175,7 @@ But I'm open to add it if someone finds it interesting. Since then, I'll try to 
 
 ### Multi-domain routing (a.k.a localized routing)
 
-Check this code example here: [example-with-route-localization]
+Check this code example here: [examples/with-route-localization]
 
 <img src="./examples/with-route-localization/demo.gif" max-height="500px" align="center" />
 
@@ -199,7 +199,7 @@ If you want to suggest a change, feature or any question, feel free to open an i
 [bundlephobia-minzip-badge]: https://badgen.net/bundlephobia/minzip/routex.js
 [next-routes]: https://github.com/fridays/next-routes 'fridays/next-routes'
 [next-minimal-routes]: https://github.com/lydell/next-minimal-routes 'lydell/next-minimal-routes'
-[routes localization]: ./examples/with-route-localization
+[routes localization]: #multi-domain-routing-aka-localized-routing
 [pillarjs/path-to-regexp]: https://github.com/pillarjs/path-to-regexp
 [alexhoma.com/projects/routexjs-yet-another-router-for-nextjs]: https://alexhoma.com/projects/routexjs-yet-another-router-for-nextjs/
 [contributing file]: https://github.com/alexhoma/routex.js/blob/master/.github/contributing.md
