@@ -167,9 +167,17 @@ But I'm open to add it if someone finds it interesting. Since then, I'll try to 
 
 > For more information have a look into the [example app](./examples) directory.
 
-## Demo
+## Demos
+
+### Basic dynamic routing
 
 <img src="./examples/with-custom-link/demo.gif" max-height="500px" align="center" />
+
+### Multi-domain routing (a.k.a localized routing)
+
+Check this code example here: [example-with-route-localization]
+
+<img src="./examples/with-route-localization/demo.gif" max-height="500px" align="center" />
 
 ## Motivation
 
@@ -195,3 +203,4 @@ If you want to suggest a change, feature or any question, feel free to open an i
 [pillarjs/path-to-regexp]: https://github.com/pillarjs/path-to-regexp
 [alexhoma.com/projects/routexjs-yet-another-router-for-nextjs]: https://alexhoma.com/projects/routexjs-yet-another-router-for-nextjs/
 [contributing file]: https://github.com/alexhoma/routex.js/blob/master/.github/contributing.md
+[examples/with-route-localization]: ./examples/with-route-localization
