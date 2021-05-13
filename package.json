@@ -1,6 +1,6 @@
 {
   "name": "routex.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tiny library to manage dynamic and universal routes in Next.js",
   "source": "src/index.js",
   "module": "dist/routex.es.js",
