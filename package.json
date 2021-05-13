@@ -33,16 +33,16 @@
   "devDependencies": {
     "@babel/core": "^7.14.2",
     "@babel/preset-env": "^7.14.2",
-    "@stryker-mutator/core": "^2.5.0",
-    "@stryker-mutator/html-reporter": "^2.5.0",
-    "@stryker-mutator/javascript-mutator": "^2.5.0",
-    "@stryker-mutator/jest-runner": "^2.5.0",
-    "babel-jest": "^24.9.0",
-    "bundlesize": "^0.17.2",
+    "@stryker-mutator/core": "^4.6.0",
+    "@stryker-mutator/html-reporter": "^3.1.0",
+    "@stryker-mutator/javascript-mutator": "^4.0.0",
+    "@stryker-mutator/jest-runner": "^4.6.0",
+    "babel-jest": "^26.6.3",
+    "bundlesize": "^0.18.1",
     "codecov": "^3.8.2",
     "husky": "^3.1.0",
-    "jest": "^24.9.0",
-    "microbundle": "^0.11.0"
+    "jest": "^26.6.3",
+    "microbundle": "^0.13.0"
   },
   "dependencies": {
     "path-to-regexp": "^6.2.0"

@@ -1,5 +1,5 @@
 {
-  "name": "routex-example",
+  "name": "routex-with-custom-link",
   "version": "1.0.0",
   "description": "Routex example project",
   "main": "server.js",
